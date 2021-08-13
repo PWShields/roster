@@ -6,7 +6,9 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 
 function App() {
@@ -73,8 +75,13 @@ function App() {
                     LightTheme={LightTheme}
                 />
                 <FullCalendar
-                    plugins={[ dayGridPlugin ]}
+                    plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
                     initialView="dayGridMonth"
+                    headerToolbar={{
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    }}
                 />
             </Container>
             <Footer/>
