@@ -1,15 +1,10 @@
-import {createTheme, TextField, ThemeProvider} from "@material-ui/core";
+import {createTheme, ThemeProvider} from "@material-ui/core";
 import React from "react";
 import "./Header.css";
-import {debounce} from "lodash";
 
 
 const Header = ({
-                  category,
-                  setCategory,
-                  setWord,
                   word,
-                  setMeanings,
                   LightTheme,
                 }) => {
   const darkTheme = createTheme({
@@ -21,24 +16,13 @@ const Header = ({
     },
   });
 
-  const handleChange = (e) => {
-    setCategory(e.target.value);
-    setWord("");
-    setMeanings([]);
-  };
-
-  const handleText = debounce((text) => {
-    // setWord(text);
-  }, 500);
 
   return (
       <div className="header">
         <span className="title">{word ? word : "Roster"}</span>
-        <div className="inputs">
           <ThemeProvider theme={darkTheme}>
-
+            <p>'</p>
           </ThemeProvider>
-        </div>
       </div>
   );
 };
