@@ -1,7 +1,6 @@
 import {Container, Switch, withStyles} from "@material-ui/core";
 import {grey} from "@material-ui/core/colors";
-import axios from "axios";
-import {Component, useEffect, useState} from "react";
+import {useState} from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -12,22 +11,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 
 function App() {
-    const [word, setWord] = useState("");
-    const [meanings, setMeanings] = useState([]);
-    const [category, setCategory] = useState("en");
     const [LightTheme, setLightTheme] = useState(false);
-
-    const dictionaryApi = async () => {
-        try {
-            const data = await axios.get(
-                `https://api.dictionaryapi.dev/api/v2/entries/${category}/${word}`
-            );
-            setMeanings(data.data);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
 
     const PurpleSwitch = withStyles({
         switchBase: {
