@@ -21,7 +21,7 @@ const Header = ({
       <div className="header">
         <span className="title">{word ? word : "Roster"}</span>
           <ThemeProvider theme={darkTheme}>
-            <p>'</p>
+            <a href="https://fullcalendar.io/" target="_blank" rel="noreferrer">Fullcalendar prototype</a>
           </ThemeProvider>
       </div>
   );
