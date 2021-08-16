@@ -5,9 +5,13 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import adaptivePlugin from '@fullcalendar/adaptive';
+import listPlugin from '@fullcalendar/list';
+import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
+import Calendar from "./components/Calendar/Calendar";
 
 
 function App() {
@@ -58,15 +62,7 @@ function App() {
                 <Header
                     LightTheme={LightTheme}
                 />
-                <FullCalendar
-                    plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
-                    initialView="dayGridMonth"
-                    headerToolbar={{
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                    }}
-                />
+              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} eventContent="" />
             </Container>
             <Footer/>
         </div>
