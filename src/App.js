@@ -12,8 +12,23 @@ import shifts from "./data/shifts";
 
 function App() {
     const [LightTheme, setLightTheme] = useState(false);
+    const [ShowSchedule, setShowSchedule] = useState(false);
 
-    const PurpleSwitch = withStyles({
+    const StyleSwitch = withStyles({
+        switchBase: {
+            color: grey[50],
+            "&$checked": {
+                color: grey[900],
+            },
+            "&$checked + $track": {
+                backgroundColor: grey[500],
+            },
+        },
+        checked: {},
+        track: {},
+    })(Switch);
+
+    const CalendarSwitch = withStyles({
         switchBase: {
             color: grey[50],
             "&$checked": {
@@ -50,17 +65,30 @@ function App() {
                     style={{position: "absolute", top: 0, right: 15, paddingTop: 10}}
                 >
                     <span>{LightTheme ? "Dark" : "Light"} Mode</span>
-                    <PurpleSwitch
+                    <StyleSwitch
                         checked={LightTheme}
                         onChange={() => setLightTheme(!LightTheme)}
+                    />
+                </div>
+                <div
+                    style={{position: "absolute", top: 30, right: 15, paddingTop: 10}}
+                >
+                    <span>{ShowSchedule ? "Calendar" : "Schedule"} Mode</span>
+                    <CalendarSwitch
+                        checked={ShowSchedule}
+                        onChange={() => setShowSchedule(!ShowSchedule)}
                     />
                 </div>
                 <Header
                     LightTheme={LightTheme}
                 />
-              {/*<Calendar initialView ="dayGridMonth" initialDate = {new Date()} eventContent="" />*/}
-            <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff} eventContent={shifts} />
-            </Container>
+                {!ShowSchedule && (
+              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} eventContent="" />
+                )}
+                {ShowSchedule && (
+                <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff} eventContent={shifts} />
+                )}
+                </Container>
             <Footer/>
         </div>
             );
