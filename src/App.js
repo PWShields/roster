@@ -86,7 +86,7 @@ function App() {
               <Calendar initialView ="dayGridMonth" initialDate = {new Date()} events = {shifts} eventContent="" />
                 )}
                 {ShowSchedule && (
-                <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff} eventContent={shifts} />
+                <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff} events = {shifts} eventContent="" />
                 )}
                 </Container>
             <Footer/>
