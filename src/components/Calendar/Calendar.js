@@ -8,21 +8,8 @@ import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 
 
-// const initialDate = '2021-06-10'
-const events = [
-    {
-        title: 'event 1',
-        start: '2021-08-18T10:00:00',
-        end: '2021-08-18T11:00:00'
-    },
-    {
-        title: 'event 2',
-        start: '2021-08-26T10:00:00',
-        end: '2021-08-26T11:00:00'
-    }
-]
 
-const Calendar = ({initialView, eventContent, initialDate}) => (
+const Calendar = ({initialView, events, eventContent, initialDate}) => (
     <FullCalendar
         plugins={[
             dayGridPlugin,

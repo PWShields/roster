@@ -28,7 +28,7 @@ const Schedule = ({initialView, eventContent, initialDate, resources, events}) =
         }
         }}
         resources = {resources}
-        events = {eventContent}
+        events = {events}
     />
 )
 

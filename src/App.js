@@ -83,7 +83,7 @@ function App() {
                     LightTheme={LightTheme}
                 />
                 {!ShowSchedule && (
-              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} eventContent="" />
+              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} events = {shifts} eventContent="" />
                 )}
                 {ShowSchedule && (
                 <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff} eventContent={shifts} />
