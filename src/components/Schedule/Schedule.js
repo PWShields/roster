@@ -13,6 +13,7 @@ const Schedule = ({initialView, eventContent, initialDate, resources, events}) =
         plugins={[resourceTimelinePlugin, dayGridPlugin, timeGridPlugin, interactionPlugin, adaptivePlugin]}
         initialView={initialView}
         initialDate={initialDate}
+        editable={true}
         schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
         headerToolbar={{
             left: 'prev,next today',
