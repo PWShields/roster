@@ -4,14 +4,10 @@ import {useState} from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import FullCalendar from "@fullcalendar/react";
-import adaptivePlugin from '@fullcalendar/adaptive';
-import listPlugin from '@fullcalendar/list';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 import Calendar from "./components/Calendar/Calendar";
+import Schedule from "./components/Schedule/Schedule";
+import staff from "./data/staff";
+import shifts from "./data/shifts";
 
 
 function App() {
@@ -62,7 +58,8 @@ function App() {
                 <Header
                     LightTheme={LightTheme}
                 />
-              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} eventContent="" />
+              {/*<Calendar initialView ="dayGridMonth" initialDate = {new Date()} eventContent="" />*/}
+            <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff} eventContent={shifts} />
             </Container>
             <Footer/>
         </div>
