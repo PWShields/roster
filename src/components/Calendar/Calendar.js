@@ -19,6 +19,7 @@ const Calendar = ({initialView, events, eventContent, initialDate}) => (
             listPlugin,
             interactionPlugin
         ]}
+        editable={true}
         schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
         initialView={initialView}
         initialDate={initialDate}

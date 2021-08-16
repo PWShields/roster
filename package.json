@@ -44,5 +44,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "postcss": "8.3.6",
+    "postcss-calc": "8.0.0",
+    "postcss-loader": "6.1.1"
   }
 }
