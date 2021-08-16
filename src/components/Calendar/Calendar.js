@@ -30,7 +30,6 @@ const Calendar = ({initialView, events, eventContent, initialDate}) => (
         }}
         scrollTime={0}
         events={events}
-        eventContent={eventContent}
     />
 )
 

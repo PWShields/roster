@@ -73,7 +73,7 @@ function App() {
                 <div
                     style={{position: "absolute", top: 30, right: 15, paddingTop: 10}}
                 >
-                    <span>{ShowSchedule ? "Calendar" : "Schedule"} Mode</span>
+                    <span>{ShowSchedule ? "Calendar" : "Schedule"} View</span>
                     <CalendarSwitch
                         checked={ShowSchedule}
                         onChange={() => setShowSchedule(!ShowSchedule)}
