@@ -53,7 +53,7 @@ function App() {
             }}
         >
             <Container
-                maxWidth="md"
+                // maxWidth="md"
                 style={{
                     display: "flex",
                     flexDirection: "column",
