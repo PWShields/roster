@@ -5,11 +5,11 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import timelinePlugin from '@fullcalendar/timeline'
 import adaptivePlugin from '@fullcalendar/adaptive';
 import listPlugin from '@fullcalendar/list';
-import interactionPlugin from '@fullcalendar/interaction';
+import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 
 
 
-const Calendar = ({initialView, events, eventContent, initialDate, weekendsVisible}) => (
+const Calendar = ({initialView, events, eventContent, initialDate, weekendsVisible, handleSelect}) => (
     <FullCalendar
         plugins={[
             dayGridPlugin,
@@ -20,6 +20,9 @@ const Calendar = ({initialView, events, eventContent, initialDate, weekendsVisib
             interactionPlugin
         ]}
         editable={true}
+        droppable = {true}
+        selectable={true}
+        select={handleSelect}
         schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
         initialView={initialView}
         initialDate={initialDate}

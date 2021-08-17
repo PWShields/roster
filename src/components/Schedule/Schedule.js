@@ -3,11 +3,11 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import adaptivePlugin from '@fullcalendar/adaptive';
-import interactionPlugin from '@fullcalendar/interaction';
+import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 
 
-const Schedule = ({initialView, eventContent, initialDate, resources, events, weekendsVisible}) => (
+const Schedule = ({initialView, eventContent, initialDate, resources, events, weekendsVisible, handleSelect}) => (
 
     <FullCalendar
         plugins={[resourceTimelinePlugin, dayGridPlugin, timeGridPlugin, interactionPlugin, adaptivePlugin]}
@@ -15,6 +15,9 @@ const Schedule = ({initialView, eventContent, initialDate, resources, events, we
         initialDate={initialDate}
         weekends={weekendsVisible}
         editable={true}
+        droppable = {true}
+        selectable={true}
+        select = {handleSelect}
         schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
         headerToolbar={{
             left: 'prev,next today',

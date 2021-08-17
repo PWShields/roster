@@ -11,6 +11,9 @@ import Calendar from "./components/Calendar/Calendar";
 import Schedule from "./components/Schedule/Schedule";
 import staff from "./data/staff";
 import shifts from "./data/shifts";
+import  { Draggable } from '@fullcalendar/interaction';
+import { createEventId } from './utilities/event-utils'
+
 
 
 function App() {
@@ -21,6 +24,21 @@ function App() {
 
     const handleWeekendsToggle = () => {
             setWeekendsVisible(!WeekendsVisible)
+    }
+
+    const handleDateSelect = (selectInfo) => {
+        let title = prompt('Please enter a new title for your event')
+        let calendarApi = selectInfo.view.calendar
+        calendarApi.unselect() // clear date selection
+        if (title) {
+            calendarApi.addEvent({
+                id: createEventId(),
+                title,
+                start: selectInfo.startStr,
+                end: selectInfo.endStr,
+                allDay: selectInfo.allDay
+            })
+        }
     }
 
     const StyleSwitch = withStyles({
@@ -62,7 +80,7 @@ function App() {
             }}
         >
             <Container
-                // maxWidth="md"
+                maxWidth="md"
                 style={{
                     display: "flex",
                     flexDirection: "column",
@@ -108,10 +126,10 @@ function App() {
                     </FormGroup>
                 </div>
                 {!ShowSchedule && (
-              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} events = {shifts} eventContent="" weekendsVisible={WeekendsVisible} />
+              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} events = {shifts} eventContent="" weekendsVisible={WeekendsVisible} handleSelect ={handleDateSelect} />
                 )}
                 {ShowSchedule && (
-                <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff} events = {shifts} eventContent="" weekendsVisible={WeekendsVisible} />
+                <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff} events = {shifts} eventContent="" weekendsVisible={WeekendsVisible} handleSelect={handleDateSelect} />
                 )}
                 </Container>
             <Footer/>
