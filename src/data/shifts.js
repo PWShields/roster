@@ -15,8 +15,8 @@ let shifts = [
     },
     {
         id: 3,
-        start: '2021-08-16 09:30:00',
-        end: '2021-08-16 17:30:00',
+        start: '2021-08-16',
+        end: '2021-08-21',
         resourceId: 3,
         title: 'Leave'
     }

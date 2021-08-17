@@ -1,5 +1,8 @@
 import {Container, Switch, withStyles} from "@material-ui/core";
 import {grey} from "@material-ui/core/colors";
+import Checkbox from '@material-ui/core/Checkbox';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {useState} from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
@@ -13,6 +16,12 @@ import shifts from "./data/shifts";
 function App() {
     const [LightTheme, setLightTheme] = useState(false);
     const [ShowSchedule, setShowSchedule] = useState(false);
+    const [WeekendsVisible, setWeekendsVisible] = useState(true);
+
+
+    const handleWeekendsToggle = () => {
+            setWeekendsVisible(!WeekendsVisible)
+    }
 
     const StyleSwitch = withStyles({
         switchBase: {
@@ -82,11 +91,27 @@ function App() {
                 <Header
                     LightTheme={LightTheme}
                 />
+                <div   style={{position: "absolute", top: 60, right: 30, paddingTop: 10}}
+                >
+                    <FormGroup row>
+                        <FormControlLabel
+                            label="toggle weekends"
+                            labelPlacement="start"
+                            control={
+                                <Checkbox
+                                    onChange={handleWeekendsToggle}
+                                    name="weekends"
+                                    color="primary"
+                                />
+                            }
+                        />
+                    </FormGroup>
+                </div>
                 {!ShowSchedule && (
-              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} events = {shifts} eventContent="" />
+              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} events = {shifts} eventContent="" weekendsVisible={WeekendsVisible} />
                 )}
                 {ShowSchedule && (
-                <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff} events = {shifts} eventContent="" />
+                <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff} events = {shifts} eventContent="" weekendsVisible={WeekendsVisible} />
                 )}
                 </Container>
             <Footer/>

@@ -9,7 +9,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 
 
-const Calendar = ({initialView, events, eventContent, initialDate}) => (
+const Calendar = ({initialView, events, eventContent, initialDate, weekendsVisible}) => (
     <FullCalendar
         plugins={[
             dayGridPlugin,
@@ -23,6 +23,7 @@ const Calendar = ({initialView, events, eventContent, initialDate}) => (
         schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
         initialView={initialView}
         initialDate={initialDate}
+        weekends={weekendsVisible}
         headerToolbar={{
             left: 'prev,next today',
             center: 'title',

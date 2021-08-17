@@ -7,12 +7,13 @@ import interactionPlugin from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 
 
-const Schedule = ({initialView, eventContent, initialDate, resources, events}) => (
+const Schedule = ({initialView, eventContent, initialDate, resources, events, weekendsVisible}) => (
 
     <FullCalendar
         plugins={[resourceTimelinePlugin, dayGridPlugin, timeGridPlugin, interactionPlugin, adaptivePlugin]}
         initialView={initialView}
         initialDate={initialDate}
+        weekends={weekendsVisible}
         editable={true}
         schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
         headerToolbar={{
