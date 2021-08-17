@@ -30,6 +30,10 @@ function App() {
     const handleDateSelect = (selectInfo) => {
         let title = prompt('Please enter a new title for your event')
         let calendarApi = selectInfo.view.calendar
+        let resourceId = 1
+        if(selectInfo.resource){
+            resourceId = selectInfo.resource.id
+        }
         calendarApi.unselect() // clear date selection
         if (title) {
             calendarApi.addEvent({
@@ -37,7 +41,8 @@ function App() {
                 title,
                 start: selectInfo.startStr,
                 end: selectInfo.endStr,
-                allDay: selectInfo.allDay
+                allDay: selectInfo.allDay,
+                resourceId
             })
         }
     }
