@@ -5,7 +5,7 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import timelinePlugin from '@fullcalendar/timeline'
 import adaptivePlugin from '@fullcalendar/adaptive';
 import listPlugin from '@fullcalendar/list';
-import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
+import interactionPlugin from '@fullcalendar/interaction';
 
 
 

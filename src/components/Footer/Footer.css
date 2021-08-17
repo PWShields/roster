@@ -1,5 +1,5 @@
 .footer {
-  background-color: #282c34;
+  background-color: lightgrey;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +13,7 @@
 }
 
 a {
-  color: white;
+  color: grey;
 }
 
 .iconContainer {

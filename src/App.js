@@ -11,7 +11,7 @@ import Calendar from "./components/Calendar/Calendar";
 import Schedule from "./components/Schedule/Schedule";
 import staff from "./data/staff";
 import shifts from "./data/shifts";
-import  { Draggable } from '@fullcalendar/interaction';
+// import  { Draggable } from '@fullcalendar/interaction';
 import { createEventId } from './utilities/event-utils'
 
 
@@ -20,8 +20,6 @@ function App() {
     const [LightTheme, setLightTheme] = useState(false);
     const [ShowSchedule, setShowSchedule] = useState(false);
     const [WeekendsVisible, setWeekendsVisible] = useState(true);
-    const [CurrentEvents, setCurrentEvents] = useState(shifts);
-
 
     const handleWeekendsToggle = () => {
             setWeekendsVisible(!WeekendsVisible)
@@ -51,10 +49,11 @@ function App() {
         alert(`Editing the event '${clickInfo.event.title}'`)
     }
 
-    const handleEvents = (events) => {
-        this.setState({
-            currentEvents: events
-        })
+    const renderEventContent = (eventContent: EventContentArg) => {
+        <>
+            <b>{eventContent.timeText}</b>
+            <i>{eventContent.event.title}</i>
+        </>
     }
 
     const StyleSwitch = withStyles({
@@ -90,7 +89,7 @@ function App() {
             className="App"
             style={{
                 height: "100vh",
-                backgroundColor: LightTheme ? "#a7c9e8" : "#282c34",
+                backgroundColor: LightTheme ? "white" : "#282c34",
                 color: LightTheme ? "black" : "white",
                 transition: "all 0.5s linear",
             }}
@@ -142,12 +141,12 @@ function App() {
                     </FormGroup>
                 </div>
                 {!ShowSchedule && (
-              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} events = {CurrentEvents} eventContent=""
+              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} events = {shifts} eventContent=""
                         weekendsVisible={WeekendsVisible} handleSelect ={handleDateSelect} eventClick = {handleEventClick}/>
                 )}
                 {ShowSchedule && (
                 <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff}
-                          events = {CurrentEvents} eventContent="" weekendsVisible={WeekendsVisible}
+                          events = {shifts} eventContent="" weekendsVisible={WeekendsVisible}
                           handleSelect={handleDateSelect} eventClick = {handleEventClick} />
                 )}
                 </Container>
