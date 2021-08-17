@@ -7,7 +7,7 @@ import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 
 
-const Schedule = ({initialView, eventContent, initialDate, resources, events, weekendsVisible, handleSelect}) => (
+const Schedule = ({initialView, eventContent, initialDate, resources, events, weekendsVisible, handleSelect, eventClick}) => (
 
     <FullCalendar
         plugins={[resourceTimelinePlugin, dayGridPlugin, timeGridPlugin, interactionPlugin, adaptivePlugin]}
@@ -18,6 +18,7 @@ const Schedule = ({initialView, eventContent, initialDate, resources, events, we
         droppable = {true}
         selectable={true}
         select = {handleSelect}
+        eventClick = {eventClick}
         schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
         headerToolbar={{
             left: 'prev,next today',

@@ -9,7 +9,7 @@ import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 
 
 
-const Calendar = ({initialView, events, eventContent, initialDate, weekendsVisible, handleSelect}) => (
+const Calendar = ({initialView, events, eventContent, initialDate, weekendsVisible, handleSelect, eventClick}) => (
     <FullCalendar
         plugins={[
             dayGridPlugin,
@@ -23,6 +23,7 @@ const Calendar = ({initialView, events, eventContent, initialDate, weekendsVisib
         droppable = {true}
         selectable={true}
         select={handleSelect}
+        eventClick={eventClick}
         schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
         initialView={initialView}
         initialDate={initialDate}

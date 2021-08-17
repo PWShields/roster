@@ -20,6 +20,7 @@ function App() {
     const [LightTheme, setLightTheme] = useState(false);
     const [ShowSchedule, setShowSchedule] = useState(false);
     const [WeekendsVisible, setWeekendsVisible] = useState(true);
+    const [CurrentEvents, setCurrentEvents] = useState(shifts);
 
 
     const handleWeekendsToggle = () => {
@@ -39,6 +40,16 @@ function App() {
                 allDay: selectInfo.allDay
             })
         }
+    }
+
+    const handleEventClick = (clickInfo) => {
+        alert(`Editing the event '${clickInfo.event.title}'`)
+    }
+
+    const handleEvents = (events) => {
+        this.setState({
+            currentEvents: events
+        })
     }
 
     const StyleSwitch = withStyles({
@@ -126,10 +137,13 @@ function App() {
                     </FormGroup>
                 </div>
                 {!ShowSchedule && (
-              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} events = {shifts} eventContent="" weekendsVisible={WeekendsVisible} handleSelect ={handleDateSelect} />
+              <Calendar initialView ="dayGridMonth" initialDate = {new Date()} events = {CurrentEvents} eventContent=""
+                        weekendsVisible={WeekendsVisible} handleSelect ={handleDateSelect} eventClick = {handleEventClick}/>
                 )}
                 {ShowSchedule && (
-                <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff} events = {shifts} eventContent="" weekendsVisible={WeekendsVisible} handleSelect={handleDateSelect} />
+                <Schedule initialView ="resourceTimelineDay" initialDate = {new Date()} resources = {staff}
+                          events = {CurrentEvents} eventContent="" weekendsVisible={WeekendsVisible}
+                          handleSelect={handleDateSelect} eventClick = {handleEventClick} />
                 )}
                 </Container>
             <Footer/>
