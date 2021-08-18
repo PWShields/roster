@@ -12,8 +12,9 @@ import Calendar from "./components/Calendar/Calendar";
 import Schedule from "./components/Schedule/Schedule";
 import staff from "./data/staff";
 import shifts from "./data/shifts";
-import interactionPlugin, {Draggable} from '@fullcalendar/interaction';
+import  {Draggable} from '@fullcalendar/interaction';
 import {createEventId} from './utilities/event-utils'
+import EventCard from "./components/Event/EventCard";
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
         return () => {
             new Draggable(draggableEl);
         };
-    },[]);
+    },[ShowSchedule]);
 
 
     const handleDateSelect = (selectInfo) => {
@@ -83,15 +84,9 @@ function App() {
     }
 
     const renderEventContent = (eventInfo) => {
-        console.log(eventInfo)
+        // console.log(eventInfo)
         return(
-        <>
-            <b>{eventInfo.timeText}</b>
-            <i>{eventInfo.event.title}</i>
-            <p>
-            {eventInfo.event.extendedProps.client}</p>
-            <p></p>
-        </>
+       <EventCard eventInfo = {eventInfo} />
         )
     }
 
@@ -136,7 +131,7 @@ function App() {
             }}
         >
             <Container
-                maxWidth="md"
+                maxWidth="lg"
                 style={{
                     display: "flex",
                     flexDirection: "column",
