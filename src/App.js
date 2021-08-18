@@ -31,7 +31,7 @@ function App() {
         return () => {
             new Draggable(draggableEl);
         };
-    }, [IsClickable]);
+    });
 
 
     const handleDateSelect = (selectInfo) => {
@@ -56,10 +56,27 @@ function App() {
         }
     }
 
-    const handleDrop = () => {
+    const handleDrop = (dropInfo) => {
         setIsClickable(false);
-        alert("Dropped");
-        setIsClickable(true);
+        // alert("Dropped");
+        let title = prompt('Please enter a new title for your event')
+        let calendarApi = dropInfo.view.calendar
+        let resourceId = 1
+        if (dropInfo.resource) {
+            resourceId = dropInfo.resource.id
+        }
+        calendarApi.unselect() // clear date selection
+        if (title) {
+            calendarApi.addEvent({
+                id: createEventId(),
+                title,
+                start: dropInfo.dateStr,
+                end: dropInfo.dateStr,
+                allDay: false,
+                resourceId
+            })
+            setIsClickable(true);
+        }
     }
 
     const handleEventClick = (clickInfo) => {
