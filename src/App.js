@@ -31,7 +31,7 @@ function App() {
         return () => {
             new Draggable(draggableEl);
         };
-    });
+    },[]);
 
 
     const handleDateSelect = (selectInfo) => {
@@ -58,7 +58,6 @@ function App() {
 
     const handleDrop = (dropInfo) => {
         setIsClickable(false);
-        // alert("Dropped");
         let title = prompt('Please enter a new title for your event')
         let calendarApi = dropInfo.view.calendar
         let resourceId = 1
@@ -84,10 +83,16 @@ function App() {
     }
 
     const renderEventContent = (eventInfo) => {
+        console.log(eventInfo)
+        return(
         <>
-            {/*<b>{eventInfo.timeText}</b>*/}
+            <b>{eventInfo.timeText}</b>
             <i>{eventInfo.event.title}</i>
+            <p>
+            {eventInfo.event.extendedProps.client}</p>
+            <p></p>
         </>
+        )
     }
 
 
