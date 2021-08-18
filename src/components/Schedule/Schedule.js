@@ -5,35 +5,42 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import adaptivePlugin from '@fullcalendar/adaptive';
 import interactionPlugin from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
+import listPlugin from '@fullcalendar/list';
 
-
-const Schedule = ({initialView, eventContent, initialDate, resources, events, weekendsVisible, handleSelect, eventClick}) => (
+const Schedule = ({
+                      initialView, eventContent, initialDate, resources, events, weekendsVisible, handleSelect,
+                      eventClick, handleDrop
+                  }) => (
     <FullCalendar
-        plugins={[resourceTimelinePlugin, dayGridPlugin, timeGridPlugin, interactionPlugin, adaptivePlugin]}
+        plugins={[resourceTimelinePlugin, dayGridPlugin, timeGridPlugin, interactionPlugin, adaptivePlugin,
+            listPlugin
+        ]}
         initialView={initialView}
         initialDate={initialDate}
         weekends={weekendsVisible}
         editable={true}
-        droppable = {true}
+        droppable={true}
+        drop={handleDrop}
         selectable={true}
-        select = {handleSelect}
-        eventClick = {eventClick}
+        select={handleSelect}
+        eventClick={eventClick}
         schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
         headerToolbar={{
-            left: 'prev,next today',
-            center: 'title',
-            right: 'resourceTimelineDay,threeDays,resourceTimelineWeek,resourceTimelineMonth'
+            left: 'title',
+            center: '',
+            right: 'prev,next today listMonth,resourceTimelineMonth,resourceTimelineWeek,threeDays,resourceTimelineDay'
         }}
         resourceAreaHeaderContent='Staff'
         views={{
-            threeDays : {
-            type : 'resourceTimeline',
-            duration : {days : 3},
-            buttonText : '3 day'
-        }
+            threeDays: {
+                type: 'resourceTimeline',
+                duration: {days: 3},
+                buttonText: '3 day'
+            }
         }}
-        resources = {resources}
-        events = {events}
+        resources={resources}
+        events={events}
+        eventContent={eventContent} // custom render function
     />
 )
 
