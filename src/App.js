@@ -84,7 +84,8 @@ function App() {
     }
 
     const renderEventContent = (eventInfo) => {
-        // console.log(eventInfo)
+        console.log(eventInfo)
+        eventInfo.borderWidth = 'thick'
         return(
        <EventCard eventInfo = {eventInfo} />
         )

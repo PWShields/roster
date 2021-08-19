@@ -11,6 +11,7 @@ let shifts = [
         },
         backgroundColor: '#f2e2dc',
         borderColor: '#d9aa99',
+        className:'moreBorder'
     },
     {
         id: 2,
@@ -24,7 +25,7 @@ let shifts = [
         },
         backgroundColor: '#ffd599',
         borderColor: '#ffb347',
-
+        className:'moreBorder'
     },
     {
         id: 3,
@@ -38,7 +39,7 @@ let shifts = [
         },
         backgroundColor: '#ccddeb',
         borderColor: '#77a5ca',
-        classNames:'[#card]'
+        className:'moreBorder'
     }
 ];
 

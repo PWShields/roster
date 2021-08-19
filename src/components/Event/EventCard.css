@@ -1,5 +1,9 @@
 .card {
     color: #626262;
-    border-width: thick;
+    /*border-width: thick;*/
     border-color: black;
+}
+
+.moreBorder{
+    border-width: 2px;
 }
