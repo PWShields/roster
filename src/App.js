@@ -32,7 +32,7 @@ function App() {
         return () => {
             new Draggable(draggableEl);
         };
-    },[ShowSchedule]);
+    },[ ,ShowSchedule]);
 
 
     const handleDateSelect = (selectInfo) => {
@@ -187,7 +187,7 @@ function App() {
                               eventClick={handleEventClick}/>
                 )}
                 {ShowSchedule && (
-                    <Schedule initialView="resourceTimelineDay" initialDate={new Date()} resources={staff}
+                    <Schedule initialView="resourceTimelineMonth" initialDate={new Date()} resources={staff}
                               events={shifts} eventContent={renderEventContent} weekendsVisible={WeekendsVisible}
                               handleSelect={handleDateSelect} handleDrop={handleDrop} eventClick={handleEventClick}/>
                 )}

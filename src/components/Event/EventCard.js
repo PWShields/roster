@@ -3,9 +3,9 @@ import "./EventCard.css";
 
 const EventCard = ({ eventInfo }) => {
     return (
-        <div >
-                <b>{eventInfo.timeText}</b>
-                <p><i>{eventInfo.event.title}</i></p>
+        <div className={"card"}>
+                <b style = {{color: '#626262'}}>{eventInfo.timeText}</b>
+                <p style={{color: '#c0c0c0'}}><i>{eventInfo.event.title}</i></p>
                 <p>
                     {eventInfo.event.extendedProps.client}</p>
                 <p></p>

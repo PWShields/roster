@@ -6,8 +6,11 @@ let shifts = [
         resourceId: 1,
         title: 'Support coordinator',
         extendedProps: {
-            client: 'Marsha'
-        }
+            client: 'Marsha',
+            status: 'published'
+        },
+        backgroundColor: '#f2e2dc',
+        borderColor: '#d9aa99',
     },
     {
         id: 2,
@@ -16,8 +19,12 @@ let shifts = [
         resourceId: 2,
         title: 'Personal Care',
         extendedProps: {
-            client: 'Glen'
-        }
+            client: 'Glen',
+            status: 'finalised'
+        },
+        backgroundColor: '#ffd599',
+        borderColor: '#ffb347',
+
     },
     {
         id: 3,
@@ -26,8 +33,12 @@ let shifts = [
         resourceId: 3,
         title: 'Leave',
         extendedProps: {
-            client: ''
-        }
+            client: '',
+            status:'draft'
+        },
+        backgroundColor: '#ccddeb',
+        borderColor: '#77a5ca',
+        classNames:'[#card]'
     }
 ];
 

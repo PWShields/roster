@@ -1,7 +1,14 @@
 :root {
     --fc-border-color: grey;
+    --fc-event-text-color: black;
 }
 #calendar {
     max-width: 100%;
     margin: 40px auto;
+}
+
+#card {
+    color: black;
+    border-width: 20px;
+    border-color: black;
 }
