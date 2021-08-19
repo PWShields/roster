@@ -4,7 +4,7 @@ import {grey} from "@material-ui/core/colors";
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -12,7 +12,7 @@ import Calendar from "./components/Calendar/Calendar";
 import Schedule from "./components/Schedule/Schedule";
 import staff from "./data/staff";
 import shifts from "./data/shifts";
-import  {Draggable} from '@fullcalendar/interaction';
+import {Draggable} from '@fullcalendar/interaction';
 import {createEventId} from './utilities/event-utils'
 import EventCard from "./components/Event/EventCard";
 
@@ -28,11 +28,11 @@ function App() {
     }
 
     useEffect(() => {
-            let draggableEl = document.getElementById('new-shift');
+        let draggableEl = document.getElementById('new-shift');
         return () => {
             new Draggable(draggableEl);
         };
-    },[ ,ShowSchedule]);
+    }, [, ShowSchedule]);
 
 
     const handleDateSelect = (selectInfo) => {
@@ -70,6 +70,11 @@ function App() {
             calendarApi.addEvent({
                 id: createEventId(),
                 title,
+                extendedProps: {
+                    client: {
+                    },
+                    status: 'draft'
+                },
                 start: dropInfo.dateStr,
                 end: dropInfo.dateStr,
                 allDay: false,
@@ -84,13 +89,11 @@ function App() {
     }
 
     const renderEventContent = (eventInfo) => {
-        console.log(eventInfo)
-        eventInfo.borderWidth = 'thick'
-        return(
-       <EventCard eventInfo = {eventInfo} />
+        // console.log(eventInfo)
+        return (
+            <EventCard eventInfo={eventInfo}/>
         )
     }
-
 
 
     const StyleSwitch = withStyles({
@@ -178,11 +181,12 @@ function App() {
                     </FormGroup>
                 </div>
                 <div style={{left: 60, paddingBottom: 10}}>
-                    <p style={{paddingBottom: 1,fontSize: 8}}>Drag & drop this block to create a new shift</p>
-                    <Button id="new-shift" variant="contained" color="primary" size="small" endIcon={<DragIndicator />}>
+                    <p style={{paddingBottom: 1, fontSize: 8}}>Drag & drop this block to create a new shift</p>
+                    <Button id="new-shift" variant="contained" color="primary" size="small" endIcon={<DragIndicator/>}>
                         Add Shift
                     </Button>
-                </div>                {!ShowSchedule && (
+                </div>
+                {!ShowSchedule && (
                     <Calendar initialView="dayGridMonth" initialDate={new Date()} events={shifts} eventContent=""
                               weekendsVisible={WeekendsVisible} handleSelect={handleDateSelect}
                               eventClick={handleEventClick}/>
@@ -190,7 +194,8 @@ function App() {
                 {ShowSchedule && (
                     <Schedule initialView="resourceTimelineMonth" initialDate={new Date()} resources={staff}
                               events={shifts} eventContent={renderEventContent} weekendsVisible={WeekendsVisible}
-                              handleSelect={handleDateSelect} handleDrop={handleDrop} eventClick={handleEventClick}/>
+                              handleSelect={handleDateSelect} handleDrop={handleDrop} eventClick={handleEventClick}
+                              />
                 )}
             </Container>
             <Footer/>
