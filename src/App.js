@@ -30,10 +30,8 @@ function App() {
 
     useEffect(() => {
         let draggableEl = document.getElementById('new-shift');
-        return () => {
             new Draggable(draggableEl);
-        };
-    }, [  , ShowSchedule]);
+    });
 
 
     const handleDateSelect = (selectInfo) => {

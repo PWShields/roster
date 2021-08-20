@@ -10,7 +10,9 @@ let shifts = [
                 name:'Marsha',
                 image: 'MarshaRound.png'
             },
-            status: 'published'
+            status: 'published',
+            bookingNote: "Marsha likes going on picnics and watching TV."
+
         },
         backgroundColor: '#f2e2dc',
         borderColor: '#d9aa99',
@@ -27,7 +29,8 @@ let shifts = [
                 name:'Greg',
                 image: 'GregRound.png'
             },
-            status: 'finalised'
+            status: 'finalised',
+            bookingNote: "Greg is very boisterous and needs a lot of attention."
         },
         backgroundColor: '#ffd599',
         borderColor: '#ffb347',
@@ -44,7 +47,8 @@ let shifts = [
                 name:'',
                 image: 'TropicalRound.png'
             },
-            status:'draft'
+            status:'draft',
+            bookingNote: "Have an awesome time."
         },
         backgroundColor: '#ccddeb',
         borderColor: '#77a5ca',
