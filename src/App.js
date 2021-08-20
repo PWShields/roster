@@ -15,6 +15,7 @@ import shifts from "./data/shifts";
 import {Draggable} from '@fullcalendar/interaction';
 import {createEventId} from './utilities/event-utils'
 import EventCard from "./components/Event/EventCard";
+import EventCardNew from "./components/Event/EventCardNew";
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
         return () => {
             new Draggable(draggableEl);
         };
-    }, [, ShowSchedule]);
+    }, [  , ShowSchedule]);
 
 
     const handleDateSelect = (selectInfo) => {
@@ -51,7 +52,14 @@ function App() {
                     start: selectInfo.startStr,
                     end: selectInfo.endStr,
                     allDay: selectInfo.allDay,
-                    resourceId
+                    resourceId,
+                    extendedProps: {
+                        client: {
+                            name: '',
+                            image: '',
+                        },
+                        status: 'draft'
+                    },
                 })
             }
         }
@@ -67,20 +75,22 @@ function App() {
         }
         calendarApi.unselect() // clear date selection
         if (title) {
-            calendarApi.addEvent({
-                id: createEventId(),
-                title,
-                extendedProps: {
-                    client: {
-                    },
-                    status: 'draft'
+        calendarApi.addEvent({
+            id: createEventId(),
+            title: "new",
+            start: dropInfo.dateStr,
+            end: dropInfo.dateStr,
+            allDay: false,
+            resourceId,
+            extendedProps: {
+                client: {
+                    name: "",
+                    image: "",
                 },
-                start: dropInfo.dateStr,
-                end: dropInfo.dateStr,
-                allDay: false,
-                resourceId
-            })
-            setIsClickable(true);
+                status: 'draft'
+            },
+        })
+        setIsClickable(true);
         }
     }
 
@@ -90,9 +100,15 @@ function App() {
 
     const renderEventContent = (eventInfo) => {
         // console.log(eventInfo)
-        return (
-            <EventCard eventInfo={eventInfo}/>
-        )
+        if (eventInfo.event.title !== undefined && eventInfo.event.title !== "") {
+            return (
+                <EventCard eventInfo={eventInfo}/>
+            )
+        } else {
+            return (
+                <EventCardNew eventInfo={eventInfo}/>
+            )
+        }
     }
 
 
@@ -195,7 +211,7 @@ function App() {
                     <Schedule initialView="resourceTimelineMonth" initialDate={new Date()} resources={staff}
                               events={shifts} eventContent={renderEventContent} weekendsVisible={WeekendsVisible}
                               handleSelect={handleDateSelect} handleDrop={handleDrop} eventClick={handleEventClick}
-                              />
+                    />
                 )}
             </Container>
             <Footer/>
