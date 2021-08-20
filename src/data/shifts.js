@@ -3,7 +3,7 @@ let shifts = [
         id: 1,
         start: '2021-08-10 09:30:00',
         end: '2021-08-10 12:30:00',
-        resourceId: 1,
+        resourceIds: [1, 3],
         title: 'Support coordinator',
         extendedProps: {
             client: {
