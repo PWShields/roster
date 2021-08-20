@@ -23,6 +23,7 @@ function App() {
     const [ShowSchedule, setShowSchedule] = useState(true);
     const [WeekendsVisible, setWeekendsVisible] = useState(false);
     const [IsClickable, setIsClickable] = useState(true);
+    const [ShowFilters, setShowFilters] = useState(true);
 
     const handleWeekendsToggle = () => {
         setWeekendsVisible(!WeekendsVisible)
@@ -109,22 +110,7 @@ function App() {
         }
     }
 
-
-    const StyleSwitch = withStyles({
-        switchBase: {
-            color: grey[50],
-            "&$checked": {
-                color: grey[900],
-            },
-            "&$checked + $track": {
-                backgroundColor: grey[500],
-            },
-        },
-        checked: {},
-        track: {},
-    })(Switch);
-
-    const CalendarSwitch = withStyles({
+    const ControlsSwitch = withStyles({
         switchBase: {
             color: grey[50],
             "&$checked": {
@@ -157,11 +143,25 @@ function App() {
                     justifyContent: "space-evenly",
                 }}
             >
+                <Header
+                    LightTheme={LightTheme}
+                />
+                <div
+                    style={{position: "absolute", top: 0, left: 15, paddingTop: 10}}
+                >
+                    <span>{ShowFilters ? "Hide" : "Show"} Filters</span>
+                    <ControlsSwitch
+                        checked={ShowFilters}
+                        onChange={() => setShowFilters(!ShowFilters)}
+                    />
+                </div>
+                {ShowFilters && (
+                    <div>
                 <div
                     style={{position: "absolute", top: 0, right: 15, paddingTop: 10}}
                 >
                     <span>{LightTheme ? "Dark" : "Light"} Mode</span>
-                    <StyleSwitch
+                    <ControlsSwitch
                         checked={LightTheme}
                         onChange={() => setLightTheme(!LightTheme)}
                     />
@@ -170,14 +170,11 @@ function App() {
                     style={{position: "absolute", top: 30, right: 15, paddingTop: 10}}
                 >
                     <span>{ShowSchedule ? "Calendar" : "Schedule"} View</span>
-                    <CalendarSwitch
+                    <ControlsSwitch
                         checked={ShowSchedule}
                         onChange={() => setShowSchedule(!ShowSchedule)}
                     />
                 </div>
-                <Header
-                    LightTheme={LightTheme}
-                />
                 <div style={{position: "absolute", top: 60, right: 30, paddingTop: 10}}
                 >
                     <FormGroup row>
@@ -194,6 +191,7 @@ function App() {
                         />
                     </FormGroup>
                 </div>
+                    </div> )}
                 <div style={{left: 60, paddingBottom: 10}}>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Drag & drop this block to create a new shift</p>
                     <Button id="new-shift" variant="contained" color="primary" size="small" endIcon={<DragIndicator/>}>
