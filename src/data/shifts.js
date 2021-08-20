@@ -11,8 +11,8 @@ let shifts = [
                 image: 'MarshaRound.png'
             },
             status: 'published',
-            bookingNote: "Marsha likes going on picnics and watching TV."
-
+            bookingNote: "Marsha likes going on picnics and watching TV.",
+            paid: 'true'
         },
         backgroundColor: '#f2e2dc',
         borderColor: '#d9aa99',

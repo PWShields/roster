@@ -1,6 +1,7 @@
 import React from "react";
 import "./EventCard.css";
 import ImageComponent from "../Widgets/ImageComponent";
+import MonetizationOnTwoToneIcon from '@material-ui/icons/MonetizationOnTwoTone';
 import Tooltip from '@material-ui/core/Tooltip';
 import {withStyles, makeStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -15,6 +16,7 @@ const EventCard = ({eventInfo}) => {
             border: '1px solid #dadde9',
         },
     }))(Tooltip);
+
     return (
         <div className={"card"}>
             <HtmlTooltip
@@ -25,7 +27,7 @@ const EventCard = ({eventInfo}) => {
                     </React.Fragment>
                 }
             >
-                <div>
+                <div >
                     <b style={{color: '#626262'}}>{eventInfo.timeText}</b>
                     <p style={{color: '#c0c0c0'}}><i>{eventInfo.event.title}</i></p>
                     <p>
@@ -33,6 +35,7 @@ const EventCard = ({eventInfo}) => {
                         <ImageComponent
                             src={`${process.env.PUBLIC_URL}/images/` + eventInfo.event.extendedProps.client.image}
                             alt={''} width={30} height={30}/></p>
+                    {eventInfo.event.extendedProps.paid !== undefined && eventInfo.event.extendedProps.paid == "true" && <MonetizationOnTwoToneIcon/>}
                 </div>
             </HtmlTooltip>
         </div>
