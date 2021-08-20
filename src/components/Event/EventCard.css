@@ -7,3 +7,21 @@
 .moreBorder{
     border-width: 2px;
 }
+
+.published {
+    backgroundColor: '#f2e2dc';
+    borderColor: '#d9aa99';
+    border-width: 2px;
+}
+
+.finalised {
+    backgroundColor: '#ffd599';
+    borderColor: '#ffb347';
+    border-width: 2px;
+}
+
+.draft {
+    backgroundColor: '#ccddeb';
+    borderColor: '#77a5ca';
+    border-width: 2px;
+}
