@@ -1,9 +1,6 @@
 import {Container, Switch, withStyles, Button} from "@material-ui/core";
 import {DragIndicator} from '@material-ui/icons';
 import {grey} from "@material-ui/core/colors";
-import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import React, {useState, useEffect} from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
@@ -24,10 +21,6 @@ function App() {
     const [WeekendsVisible, setWeekendsVisible] = useState(false);
     const [IsClickable, setIsClickable] = useState(true);
     const [ShowFilters, setShowFilters] = useState(true);
-
-    const handleWeekendsToggle = () => {
-        setWeekendsVisible(!WeekendsVisible)
-    }
 
     useEffect(() => {
         let draggableEl = document.getElementById('new-shift');
@@ -65,7 +58,7 @@ function App() {
     }
 
     const handleDrop = (dropInfo) => {
-        setIsClickable(false);
+        // setIsClickable(false);
         let title = prompt('Please enter a new title for your event')
         let calendarApi = dropInfo.view.calendar
         let resourceId = 1
@@ -175,21 +168,13 @@ function App() {
                         onChange={() => setShowSchedule(!ShowSchedule)}
                     />
                 </div>
-                <div style={{position: "absolute", top: 60, right: 30, paddingTop: 10}}
+                <div style={{position: "absolute", top: 60, right: 15, paddingTop: 10}}
                 >
-                    <FormGroup row>
-                        <FormControlLabel
-                            label="toggle weekends"
-                            labelPlacement="start"
-                            control={
-                                <Checkbox
-                                    onChange={handleWeekendsToggle}
-                                    name="weekends"
-                                    color="primary"
-                                />
-                            }
-                        />
-                    </FormGroup>
+                    <span>{WeekendsVisible ? "Hide weekends" : "Show weekends"} View</span>
+                    <ControlsSwitch
+                        checked={WeekendsVisible}
+                        onChange={() => setWeekendsVisible(!WeekendsVisible)}
+                    />
                 </div>
                     </div> )}
                 <div style={{left: 60, paddingBottom: 10}}>
