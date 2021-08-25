@@ -58,7 +58,6 @@ function App() {
     }
 
     const handleDrop = (dropInfo) => {
-        // setIsClickable(false);
         let title = prompt('Please enter a new title for your event')
         let calendarApi = dropInfo.view.calendar
         let resourceId = 1
@@ -82,7 +81,6 @@ function App() {
                 status: 'draft'
             },
         })
-        setIsClickable(true);
         }
     }
 
@@ -121,7 +119,7 @@ function App() {
         <div
             className="App"
             style={{
-                height: "100vh",
+                height: "20vh",
                 backgroundColor: LightTheme ? "white" : "#282c34",
                 color: LightTheme ? "black" : "white",
                 transition: "all 0.5s linear",
@@ -132,7 +130,7 @@ function App() {
                 style={{
                     display: "flex",
                     flexDirection: "column",
-                    height: "100vh",
+                    height: "20vh",
                     justifyContent: "space-evenly",
                 }}
             >
@@ -183,7 +181,9 @@ function App() {
                         Add Shift
                     </Button>
                 </div>
-                {!ShowSchedule && (
+            </Container>
+            <div style={{margin: 20}}>
+            {!ShowSchedule && (
                     <Calendar initialView="dayGridMonth" initialDate={new Date()} events={shifts} eventContent=""
                               weekendsVisible={WeekendsVisible} handleSelect={handleDateSelect}
                               eventClick={handleEventClick}/>
@@ -194,7 +194,7 @@ function App() {
                               handleSelect={handleDateSelect} handleDrop={handleDrop} eventClick={handleEventClick}
                     />
                 )}
-            </Container>
+            </div>
             <Footer/>
         </div>
     );
