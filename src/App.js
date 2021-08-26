@@ -13,6 +13,9 @@ import {Draggable} from '@fullcalendar/interaction';
 import {createEventId} from './utilities/event-utils'
 import EventCard from "./components/Event/EventCard";
 import EventCardNew from "./components/Event/EventCardNew";
+import TransitionsModal from "./components/Modal/TransitionModal";
+import useModal from "./components/Hooks/useModal";
+import Modal from "./components/Modal/Modal";
 
 
 function App() {
@@ -21,6 +24,8 @@ function App() {
     const [WeekendsVisible, setWeekendsVisible] = useState(false);
     const [IsClickable, setIsClickable] = useState(true);
     const [ShowFilters, setShowFilters] = useState(true);
+    const [ShowAddEvent, setShowAddEvent] = useState(false);
+    const {isShowing, toggle} = useModal();
 
     useEffect(() => {
         let draggableEl = document.getElementById('new-shift');
@@ -29,33 +34,37 @@ function App() {
 
 
     const handleDateSelect = (selectInfo) => {
-        if (IsClickable) {
-            let title = prompt('Please enter a new title for your event')
-            let calendarApi = selectInfo.view.calendar
-            let resourceId = 1
-            if (selectInfo.resource) {
-                resourceId = selectInfo.resource.id
-            }
-            calendarApi.unselect() // clear date selection
-            if (title) {
-                calendarApi.addEvent({
-                    id: createEventId(),
-                    title,
-                    start: selectInfo.startStr,
-                    end: selectInfo.endStr,
-                    allDay: selectInfo.allDay,
-                    resourceId,
-                    extendedProps: {
-                        client: {
-                            name: '',
-                            image: '',
-                        },
-                        status: 'draft'
-                    },
-                })
-            }
-        }
+        console.log(selectInfo)
+        toggle()
+        // setShowAddEvent(true);
+        // if (IsClickable) {
+        //     let title = prompt('Please enter a new title for your event')
+        //     let calendarApi = selectInfo.view.calendar
+        //     let resourceId = 1
+        //     if (selectInfo.resource) {
+        //         resourceId = selectInfo.resource.id
+        //     }
+        //     calendarApi.unselect() // clear date selection
+        //     if (title) {
+        //         calendarApi.addEvent({
+        //             id: createEventId(),
+        //             title,
+        //             start: selectInfo.startStr,
+        //             end: selectInfo.endStr,
+        //             allDay: selectInfo.allDay,
+        //             resourceId,
+        //             extendedProps: {
+        //                 client: {
+        //                     name: '',
+        //                     image: '',
+        //                 },
+        //                 status: 'draft'
+        //             },
+        //         })
+        //     }
+        // }
     }
+
 
     const handleDrop = (dropInfo) => {
         let title = prompt('Please enter a new title for your event')
@@ -177,9 +186,17 @@ function App() {
                     </div> )}
                 <div style={{left: 60, paddingBottom: 10}}>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Drag & drop this block to create a new shift</p>
+                    <p style={{paddingBottom: 1, fontSize: 8}}>Or click on a date in the calendar</p>
                     <Button id="new-shift" variant="contained" color="primary" size="small" endIcon={<DragIndicator/>}>
                         Add Shift
                     </Button>
+                </div>
+                <div>
+                    <button className="button-default" onClick={toggle}>Show Modal</button>
+                    <Modal
+                        isShowing={isShowing}
+                        hide={toggle}
+                    />
                 </div>
             </Container>
             <div style={{margin: 20}}>
