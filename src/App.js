@@ -13,18 +13,17 @@ import {Draggable} from '@fullcalendar/interaction';
 import {createEventId} from './utilities/event-utils'
 import EventCard from "./components/Event/EventCard";
 import EventCardNew from "./components/Event/EventCardNew";
-import TransitionsModal from "./components/Modal/TransitionModal";
 import useModal from "./components/Hooks/useModal";
-import Modal from "./components/Modal/Modal";
+import AppModal from "./components/Modal/AppModal";
+
 
 
 function App() {
     const [LightTheme, setLightTheme] = useState(true);
     const [ShowSchedule, setShowSchedule] = useState(true);
     const [WeekendsVisible, setWeekendsVisible] = useState(false);
-    const [IsClickable, setIsClickable] = useState(true);
     const [ShowFilters, setShowFilters] = useState(true);
-    const [ShowAddEvent, setShowAddEvent] = useState(false);
+    const [SelectedDate, setSelectedDate] = useState('');
     const {isShowing, toggle} = useModal();
 
     useEffect(() => {
@@ -35,6 +34,8 @@ function App() {
 
     const handleDateSelect = (selectInfo) => {
         console.log(selectInfo)
+        console.log(selectInfo.startStr)
+        // setSelectedDate(selectInfo.startStr)
         toggle()
         // setShowAddEvent(true);
         // if (IsClickable) {
@@ -187,15 +188,17 @@ function App() {
                 <div style={{left: 60, paddingBottom: 10}}>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Drag & drop this block to create a new shift</p>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Or click on a date in the calendar</p>
-                    <Button id="new-shift" variant="contained" color="primary" size="small" endIcon={<DragIndicator/>}>
+                    <Button className="button-default" id="new-shift" variant="contained" color="primary"  endIcon={<DragIndicator/>}>
                         Add Shift
                     </Button>
                 </div>
                 <div>
-                    <button className="button-default" onClick={toggle}>Show Modal</button>
-                    <Modal
+                    <Button className="button-default" variant="contained" color="primary" onClick={toggle}>
+                        Add Shift or Appointment</Button>
+                    <AppModal
                         isShowing={isShowing}
                         hide={toggle}
+                        // selectedDate ={SelectedDate}
                     />
                 </div>
             </Container>
@@ -208,7 +211,7 @@ function App() {
                 {ShowSchedule && (
                     <Schedule initialView="resourceTimelineMonth" initialDate={new Date()} resources={staff}
                               events={shifts} eventContent={renderEventContent} weekendsVisible={WeekendsVisible}
-                              handleSelect={handleDateSelect} handleDrop={handleDrop} eventClick={handleEventClick}
+                              handleSelect={handleDateSelect}  eventClick={handleEventClick}
                     />
                 )}
             </div>

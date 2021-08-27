@@ -21,6 +21,7 @@ const Calendar = ({initialView, events, eventContent, initialDate, weekendsVisib
         ]}
         editable={true}
         droppable = {true}
+        height = {"auto"}
         selectable={true}
         select={handleSelect}
         eventClick={eventClick}
