@@ -1,4 +1,4 @@
-import {Container, Switch, withStyles, Button} from "@material-ui/core";
+import {Container, Switch, withStyles, Button, MuiThemeProvider} from "@material-ui/core";
 import {DragIndicator} from '@material-ui/icons';
 import {grey} from "@material-ui/core/colors";
 import React, {useState, useEffect} from "react";
@@ -202,7 +202,12 @@ function App() {
                     />
                 </div>
             </Container>
-            <div style={{margin: 20}}>
+
+            <div style={{margin: 20,
+                backgroundColor: LightTheme ? "white" : "#282c34",
+                color: LightTheme ? "black" : "white",
+                transition: "all 0.5s linear",
+            }}>
             {!ShowSchedule && (
                     <Calendar initialView="dayGridMonth" initialDate={new Date()} events={shifts} eventContent=""
                               weekendsVisible={WeekendsVisible} handleSelect={handleDateSelect}
@@ -211,7 +216,7 @@ function App() {
                 {ShowSchedule && (
                     <Schedule initialView="resourceTimelineMonth" initialDate={new Date()} resources={staff}
                               events={shifts} eventContent={renderEventContent} weekendsVisible={WeekendsVisible}
-                              handleSelect={handleDateSelect}  eventClick={handleEventClick}
+                              handleSelect={handleDateSelect}  eventClick={handleEventClick} lightTheme={LightTheme}
                     />
                 )}
             </div>

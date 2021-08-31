@@ -1,26 +1,20 @@
-import {createTheme, ThemeProvider} from "@material-ui/core";
+import {ThemeProvider} from "@material-ui/core";
 import React from "react";
 import "./Header.css";
+import {DarkTheme} from "../../themes/DarkTheme";
 
 
 const Header = ({
                   word,
                   LightTheme,
                 }) => {
-  const darkTheme = createTheme({
-    palette: {
-      primary: {
-        main: LightTheme ? "#000" : "#fff",
-      },
-      type: LightTheme ? "light" : "dark",
-    },
-  });
 
+const theme = DarkTheme(LightTheme)
 
   return (
       <div className="header">
         <span className="title">{word ? word : "Roster"}</span>
-          <ThemeProvider theme={darkTheme}>
+          <ThemeProvider theme={theme}>
             <a href="https://fullcalendar.io/" target="_blank" rel="noreferrer">Fullcalendar prototype</a>
           </ThemeProvider>
       </div>
