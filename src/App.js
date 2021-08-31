@@ -1,4 +1,4 @@
-import {Container, Switch, withStyles, Button, MuiThemeProvider} from "@material-ui/core";
+import {Container, Switch, withStyles, Button} from "@material-ui/core";
 import {DragIndicator} from '@material-ui/icons';
 import {grey} from "@material-ui/core/colors";
 import React, {useState, useEffect} from "react";
@@ -14,7 +14,7 @@ import {createEventId} from './utilities/event-utils'
 import EventCard from "./components/Event/EventCard";
 import EventCardNew from "./components/Event/EventCardNew";
 import useModal from "./components/Hooks/useModal";
-import AppModal from "./components/Modal/AppModal";
+import FormDialog from "./components/Modal/FormDialog";
 
 
 
@@ -25,6 +25,8 @@ function App() {
     const [ShowFilters, setShowFilters] = useState(true);
     const [SelectedDate, setSelectedDate] = useState('');
     const {isShowing, toggle} = useModal();
+    const [open, setOpen] = useState(false);
+
 
     useEffect(() => {
         let draggableEl = document.getElementById('new-shift');
@@ -36,7 +38,8 @@ function App() {
         console.log(selectInfo)
         console.log(selectInfo.startStr)
         // setSelectedDate(selectInfo.startStr)
-        toggle()
+        // toggle()
+        handleClickAdd()
         // setShowAddEvent(true);
         // if (IsClickable) {
         //     let title = prompt('Please enter a new title for your event')
@@ -93,6 +96,13 @@ function App() {
         })
         }
     }
+    const handleClickAdd = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const handleEventClick = (clickInfo) => {
         alert(`Editing the event '${clickInfo.event.title}'`)
@@ -195,11 +205,7 @@ function App() {
                 <div>
                     <Button className="button-default" variant="contained" color="primary" onClick={toggle}>
                         Add Shift or Appointment</Button>
-                    <AppModal
-                        isShowing={isShowing}
-                        hide={toggle}
-                        // selectedDate ={SelectedDate}
-                    />
+                    { open && <FormDialog setShowModal={setOpen}/>}
                 </div>
             </Container>
 
