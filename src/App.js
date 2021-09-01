@@ -3,7 +3,6 @@ import {DragIndicator} from '@material-ui/icons';
 import {grey} from "@material-ui/core/colors";
 import React, {useState, useEffect} from "react";
 import "./App.css";
-import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Calendar from "./components/Calendar/Calendar";
 import Schedule from "./components/Schedule/Schedule";
@@ -23,7 +22,7 @@ function App() {
     const [LightTheme, setLightTheme] = useState(true);
     const [ShowSchedule, setShowSchedule] = useState(true);
     const [WeekendsVisible, setWeekendsVisible] = useState(false);
-    const [ShowFilters, setShowFilters] = useState(true);
+    const [ShowFilters, setShowFilters] = useState(false);
     const [ShowControls, setShowControls] = useState(true);
     const [SelectedDate, setSelectedDate] = useState('');
     const {isShowing, toggle} = useModal();
@@ -199,7 +198,7 @@ function App() {
                 </div>
                 <Grid container justifyContent="flex-start" alignItems="center">
                 <div>
-                    <div style={{ paddingBottom: 10, paddingTop: 50}}>
+                    <div style={{ paddingBottom: 10, paddingTop: 50 }}>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Drag & drop this block to create a new shift</p>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Or click on a date in the calendar</p>
                     <Button className="button-default" id="new-shift" variant="contained" color="primary"  endIcon={<DragIndicator/>}>
@@ -216,7 +215,6 @@ function App() {
                         <div>
                             THIS IS THE FILTERS SECTION
                         </div>
-
                 )}
                 </Grid>
             </Container>

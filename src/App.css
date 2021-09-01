@@ -1,6 +1,12 @@
 :root {
     --fc-border-color: grey;
     --fc-event-text-color: black;
+    --fc-button-primary : {
+        background-color: #337AB7;
+        background-image: none;
+    };
+    --fc-button-bg-color: #337AB7;
+    --fc-button-active-bg-color: rgba(0, 174, 255, 0.98)
 }
 #calendar {
     max-width: 100%;
