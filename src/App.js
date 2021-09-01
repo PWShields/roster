@@ -15,6 +15,7 @@ import EventCard from "./components/Event/EventCard";
 import EventCardNew from "./components/Event/EventCardNew";
 import useModal from "./components/Hooks/useModal";
 import FormDialog from "./components/Modal/FormDialog";
+import Grid from "@material-ui/core/Grid";
 
 
 
@@ -23,6 +24,7 @@ function App() {
     const [ShowSchedule, setShowSchedule] = useState(true);
     const [WeekendsVisible, setWeekendsVisible] = useState(false);
     const [ShowFilters, setShowFilters] = useState(true);
+    const [ShowControls, setShowControls] = useState(true);
     const [SelectedDate, setSelectedDate] = useState('');
     const {isShowing, toggle} = useModal();
     const [open, setOpen] = useState(false);
@@ -146,7 +148,7 @@ function App() {
             }}
         >
             <Container
-                maxWidth="lg"
+                maxWidth="xl"
                 style={{
                     display: "flex",
                     flexDirection: "column",
@@ -154,48 +156,50 @@ function App() {
                     justifyContent: "space-evenly",
                 }}
             >
-                <Header
-                    LightTheme={LightTheme}
-                />
-                <div
-                    style={{position: "absolute", top: 0, left: 15, paddingTop: 10}}
-                >
-                    <span>{ShowFilters ? "Hide" : "Show"} Filters</span>
-                    <ControlsSwitch
-                        checked={ShowFilters}
-                        onChange={() => setShowFilters(!ShowFilters)}
-                    />
-                </div>
-                {ShowFilters && (
+                {/*<Header*/}
+                {/*    LightTheme={LightTheme}*/}
+                {/*/>*/}
+                {ShowControls && (
                     <div>
                 <div
                     style={{position: "absolute", top: 0, right: 15, paddingTop: 10}}
                 >
-                    <span>{LightTheme ? "Dark" : "Light"} Mode</span>
+                <Grid container justifyContent="flex-end">
+                    <span>{WeekendsVisible ? "Hide weekends" : "Show weekends"}</span>
                     <ControlsSwitch
-                        checked={LightTheme}
-                        onChange={() => setLightTheme(!LightTheme)}
+                        checked={WeekendsVisible}
+                        onChange={() => setWeekendsVisible(!WeekendsVisible)}
                     />
-                </div>
-                <div
-                    style={{position: "absolute", top: 30, right: 15, paddingTop: 10}}
-                >
                     <span>{ShowSchedule ? "Calendar" : "Schedule"} View</span>
                     <ControlsSwitch
                         checked={ShowSchedule}
                         onChange={() => setShowSchedule(!ShowSchedule)}
                     />
-                </div>
-                <div style={{position: "absolute", top: 60, right: 15, paddingTop: 10}}
-                >
-                    <span>{WeekendsVisible ? "Hide weekends" : "Show weekends"} View</span>
+                    <span>{LightTheme ? "Dark" : "Light"} Mode</span>
                     <ControlsSwitch
-                        checked={WeekendsVisible}
-                        onChange={() => setWeekendsVisible(!WeekendsVisible)}
+                        checked={LightTheme}
+                        onChange={() => setLightTheme(!LightTheme)}
+                    />
+                        <span>{ShowFilters ? "Hide" : "Show"} Filters</span>
+                        <ControlsSwitch
+                            checked={ShowFilters}
+                            onChange={() => setShowFilters(!ShowFilters)}
+                        />
+                </Grid>
+                </div>
+                    </div>
+                )}
+
+                <div style={{position: "absolute", top: 0, left: 15, paddingTop: 10}}>
+                    <span>{ShowControls ? "Hide" : "Show"} Controls</span>
+                    <ControlsSwitch
+                        checked={ShowControls}
+                        onChange={() => setShowControls(!ShowControls)}
                     />
                 </div>
-                    </div> )}
-                <div style={{left: 60, paddingBottom: 10}}>
+                <Grid container justifyContent="flex-start" alignItems="center">
+                <div>
+                    <div style={{ paddingBottom: 10, paddingTop: 50}}>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Drag & drop this block to create a new shift</p>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Or click on a date in the calendar</p>
                     <Button className="button-default" id="new-shift" variant="contained" color="primary"  endIcon={<DragIndicator/>}>
@@ -207,6 +211,14 @@ function App() {
                         Add Shift or Appointment</Button>
                     { open && <FormDialog setShowModal={setOpen}/>}
                 </div>
+                </div>
+                {ShowFilters && (
+                        <div>
+                            THIS IS THE FILTERS SECTION
+                        </div>
+
+                )}
+                </Grid>
             </Container>
 
             <div style={{margin: 20,

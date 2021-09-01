@@ -29,9 +29,9 @@ const Schedule = ({
         eventClick={eventClick}
         schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
         headerToolbar={{
-            left: 'title',
-            center: '',
-            right: 'prev,next today listMonth,resourceTimelineMonth,resourceTimelineWeek,threeDays,resourceTimelineDay'
+            left: 'prev,next today',
+            center: 'title',
+            right: 'resourceTimelineMonth,resourceTimelineWeek,resourceTimelineDay,listMonth threeDays'
         }}
         resourceAreaHeaderContent='Staff'
         views={{
