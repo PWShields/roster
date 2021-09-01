@@ -19,6 +19,11 @@
     border-color: black;
 }
 
+.button {
+    background-color: #337AB7;
+    backgroun-image: none;
+}
+
 .App {
     /*text-align: center;*/
     /*padding-top: 2rem;*/

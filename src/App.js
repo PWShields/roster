@@ -15,6 +15,7 @@ import EventCardNew from "./components/Event/EventCardNew";
 import useModal from "./components/Hooks/useModal";
 import FormDialog from "./components/Modal/FormDialog";
 import Grid from "@material-ui/core/Grid";
+import CustomButton from "./components/Widgets/CustomButton";
 
 
 
@@ -201,13 +202,13 @@ function App() {
                     <div style={{ paddingBottom: 10, paddingTop: 50 }}>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Drag & drop this block to create a new shift</p>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Or click on a date in the calendar</p>
-                    <Button className="button-default" id="new-shift" variant="contained" color="primary"  endIcon={<DragIndicator/>}>
+                    <CustomButton className="button-default" id="new-shift" variant="contained" color="primary"  endIcon={<DragIndicator/>}>
                         Add Shift
-                    </Button>
+                    </CustomButton>
                 </div>
                 <div>
-                    <Button className="button-default" variant="contained" color="primary" onClick={toggle}>
-                        Add Shift or Appointment</Button>
+                    <CustomButton className="button-default"  variant="contained" color="primary" onClick={toggle}>
+                        Add Shift or Appointment</CustomButton>
                     { open && <FormDialog setShowModal={setOpen}/>}
                 </div>
                 </div>
