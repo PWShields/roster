@@ -1,71 +1,36 @@
 import React from "react";
-import { Formik, Form, Field } from 'formik';
-import { Button, LinearProgress } from '@material-ui/core';
-import { TextField } from 'formik-material-ui';
+import {Button, LinearProgress, Input, Select} from '@material-ui/core';
+import { useForm, Controller } from "react-hook-form";
 import "./Form.css";
 
 
 
 const AddAppointmentForm = (saveData, cancelForm) => {
-
+    const { control, handleSubmit } = useForm();
+    const onSubmit = data => prompt(data);
     return (
         <div className="form">
-            <Formik
-                initialValues={{
-                    name: '',
-                    staff: ''
-                }}
-                onSubmit={(values,{}) => {
-
-                }}
-            >
-                {({ submitForm, isSubmitting, cancelForm, saveData }) => (
-                    <Form>
-                        <Field
-                            component={TextField}
-                            name="name"
-                            type="text"
-                            label="Name"
-                        />
-                        <br />
-                        <Field
-                            component={TextField}
-                            type="text"
-                            label="With"
-                            name="staff"
-                        />
-                        <br />
-                        <Field
-                            component={TextField}
-                            type="text"
-                            label="Location"
-                            name="Location"
-                        />
-                        {isSubmitting && <LinearProgress />}
-                        <br />
-                        <br />
-                        <Button
-                            className="button-default"
-                            variant="contained"
-                            color="primary"
-                            disabled={isSubmitting}
-                            onClick={submitForm}
-                        >
-                            save
-                        </Button> <Button
-                            className="button-default"
-                            variant="contained"
-                            color="tertiary"
-                            disabled={isSubmitting}
-                            onClick={cancelForm}
-                        >
-                            cancel
-                        </Button>
-                    </Form>
-                )}
-            </Formik>
-
-
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <Controller
+                    name="firstName"
+                    control={control}
+                    defaultValue=""
+                    render={({ field }) => <Input {...field} />}
+                />
+                <Controller
+                    name="iceCreamType"
+                    control={control}
+                    render={({ field }) => <Select
+                        {...field}
+                        options={[
+                            { value: "chocolate", label: "Chocolate" },
+                            { value: "strawberry", label: "Strawberry" },
+                            { value: "vanilla", label: "Vanilla" }
+                        ]}
+                    />}
+                />
+                <input type="submit" />
+            </form>
         </div>
     );
 };

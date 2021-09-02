@@ -207,7 +207,7 @@ function App() {
                     </CustomButton>
                 </div>
                 <div>
-                    <CustomButton className="button-default"  variant="contained" color="primary" onClick={toggle}>
+                    <CustomButton className="button-default"  variant="contained" color="primary" onClick={handleClickAdd}>
                         Add Shift or Appointment</CustomButton>
                     { open && <FormDialog setShowModal={setOpen}/>}
                 </div>

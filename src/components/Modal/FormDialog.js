@@ -15,11 +15,17 @@ import {
     KeyboardDatePicker,
 } from '@material-ui/pickers';
 import {MenuItem} from "@material-ui/core";
+import AddAppointmentForm from "../Form/AddAppointmentForm";
 
 export default function FormDialog( {setShowModal} ) {
     const [isOpen, setIsOpen] = useState(true);
 
     const handleClose = ()=> {
+        setIsOpen(false);
+        setShowModal(false);
+    }
+
+    const handleSave = ()=> {
         setIsOpen(false);
         setShowModal(false);
     }
