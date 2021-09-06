@@ -1,14 +1,14 @@
 let shifts = [
     {
         id: 1,
-        start: '2021-08-10 09:30:00',
-        end: '2021-08-10 12:30:00',
+        start: '2021-09-10 09:30:00',
+        end: '2021-09-10 12:30:00',
         resourceIds: [1, 3],
         title: 'Support coordinator',
         extendedProps: {
             client: {
-                name:'Marsha',
-                image: 'MarshaRound.png'
+                name:'Marcia',
+                image: 'MarciaRound.png'
             },
             status: 'published',
             bookingNote: "Marsha likes going on picnics and watching TV.",
@@ -20,8 +20,8 @@ let shifts = [
     },
     {
         id: 2,
-        start: '2021-08-12 09:30:00',
-        end: '2021-08-12 17:30:00',
+        start: '2021-09-14 09:30:00',
+        end: '2021-09-14 17:30:00',
         resourceId: 2,
         title: 'Personal Care',
         extendedProps: {
@@ -38,8 +38,8 @@ let shifts = [
     },
     {
         id: 3,
-        start: '2021-08-16',
-        end: '2021-08-21',
+        start: '2021-09-16',
+        end: '2021-09-21',
         resourceId: 3,
         title: 'Leave',
         extendedProps: {
