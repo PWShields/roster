@@ -12,7 +12,7 @@ import {Draggable} from '@fullcalendar/interaction';
 import {createEventId} from './utilities/event-utils'
 import EventCard from "./components/Event/EventCard";
 import EventCardNew from "./components/Event/EventCardNew";
-import AddEventDialog from "./components/Modal/AddEventDialog";
+import AddEventDialog from "./components/AddEvent/AddEventDialog";
 import Grid from "@material-ui/core/Grid";
 import CustomButton from "./components/Widgets/CustomButton";
 

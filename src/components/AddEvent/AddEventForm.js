@@ -11,10 +11,13 @@ import {createEventId} from "../../utilities/event-utils";
 
 const defaultValues = {
     participant: "",
-    location: "",
-    role: "",
+    location: "Home",
+    role: "Care",
     staff: ""
 }
+
+const knownPhotos = ["Greg","Marcia"]
+
 
 const AddEventForm = ({setShowModal, selectedData}) => {
     const [formValues, setFormValues] = useState(defaultValues);
@@ -31,6 +34,14 @@ const AddEventForm = ({setShowModal, selectedData}) => {
         });
     };
 
+    const findPhoto = (participant) => {
+        let photo = 'placeholder_head_Round.png'
+        if(knownPhotos.includes(participant)){
+            photo = participant+'Round.png'
+        }
+        return photo
+    }
+
     function saveNewEvent() {
         let calendarApi = selectedData.view.calendar
         let resourceId = 1
@@ -40,18 +51,21 @@ const AddEventForm = ({setShowModal, selectedData}) => {
         calendarApi.unselect() // clear date selection
         calendarApi.addEvent({
             id: createEventId(),
-            start: selectedData.startStr,
-            end: selectedData.endStr,
+            start: selectedData.start,
+            end: selectedData.end,
             allDay: selectedData.allDay,
             title: formValues.role,
             resourceId: resourceId,
             extendedProps: {
                 client: {
                     name: formValues.participant,
-                    image: '',
+                    image: findPhoto(formValues.participant)
                 },
                 status: 'draft'
             },
+            backgroundColor: '#f2e2dc',
+            borderColor: '#d9aa99',
+            className:'moreBorder'
         })
     }
 

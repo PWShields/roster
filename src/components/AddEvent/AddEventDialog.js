@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import {Dialog, DialogContent} from "@material-ui/core";
-import AddEventForm from "../Form/AddEventForm";
+import AddEventForm from "./AddEventForm";
 
 
 export default function AddEventDialog( {setShowModal, selectedData} ) {
