@@ -9,22 +9,24 @@ import roles from "../../data/roles";
 import locations from "../../data/locations";
 import {createEventId} from "../../utilities/event-utils";
 
-const defaultValues = {
-    participant: "",
-    location: "Home",
-    role: "Care",
-    staff: ""
-}
-
-const knownPhotos = ["Greg","Marcia"]
-
 
 const AddEventForm = ({setShowModal, selectedData}) => {
-    const [formValues, setFormValues] = useState(defaultValues);
 
     useEffect(() => {
         console.log(selectedData)
+        // defaultValues.staff = selectedData.resource.title;
     });
+
+
+    const defaultValues = {
+        participant: "",
+        location: "Home",
+        role: "Care",
+        staff: selectedData.resource.title
+    }
+    const [formValues, setFormValues] = useState(defaultValues);
+    const knownPhotos = ["Greg","Marcia"]
+
 
     const handleInputChange = (e) => {
         const {name, value} = e.target;
@@ -72,6 +74,7 @@ const AddEventForm = ({setShowModal, selectedData}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         saveNewEvent();
+        setFormValues(defaultValues)
         setShowModal(false);
     };
 

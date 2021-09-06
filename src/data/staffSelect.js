@@ -1,14 +1,14 @@
 const staffSelect = [
     {
-        value: 'Harry',
+        value: 'Harry Belafonte',
         label: 'Harry Belafonte',
     },
     {
-        value: 'Doris',
+        value: 'Doris Day',
         label: 'Doris Day',
     },
     {
-        value: 'Jimmy',
+        value: 'Jimmy Durante',
         label: 'Jimmy Durante',
     }
 ];
