@@ -1,4 +1,4 @@
-import {Container, Switch, withStyles, Button} from "@material-ui/core";
+import {Container, Switch, withStyles} from "@material-ui/core";
 import {DragIndicator} from '@material-ui/icons';
 import {grey} from "@material-ui/core/colors";
 import React, {useState, useEffect} from "react";
@@ -12,8 +12,7 @@ import {Draggable} from '@fullcalendar/interaction';
 import {createEventId} from './utilities/event-utils'
 import EventCard from "./components/Event/EventCard";
 import EventCardNew from "./components/Event/EventCardNew";
-import useModal from "./components/Hooks/useModal";
-import FormDialog from "./components/Modal/FormDialog";
+import AddEventDialog from "./components/Modal/AddEventDialog";
 import Grid from "@material-ui/core/Grid";
 import CustomButton from "./components/Widgets/CustomButton";
 
@@ -26,7 +25,6 @@ function App() {
     const [ShowFilters, setShowFilters] = useState(false);
     const [ShowControls, setShowControls] = useState(true);
     const [SelectedDate, setSelectedDate] = useState('');
-    const {isShowing, toggle} = useModal();
     const [open, setOpen] = useState(false);
 
 
@@ -37,38 +35,8 @@ function App() {
 
 
     const handleDateSelect = (selectInfo) => {
-        console.log(selectInfo)
-        console.log(selectInfo.startStr)
-        // setSelectedDate(selectInfo.startStr)
-        // toggle()
+        setSelectedDate(selectInfo)
         handleClickAdd()
-        // setShowAddEvent(true);
-        // if (IsClickable) {
-        //     let title = prompt('Please enter a new title for your event')
-        //     let calendarApi = selectInfo.view.calendar
-        //     let resourceId = 1
-        //     if (selectInfo.resource) {
-        //         resourceId = selectInfo.resource.id
-        //     }
-        //     calendarApi.unselect() // clear date selection
-        //     if (title) {
-        //         calendarApi.addEvent({
-        //             id: createEventId(),
-        //             title,
-        //             start: selectInfo.startStr,
-        //             end: selectInfo.endStr,
-        //             allDay: selectInfo.allDay,
-        //             resourceId,
-        //             extendedProps: {
-        //                 client: {
-        //                     name: '',
-        //                     image: '',
-        //                 },
-        //                 status: 'draft'
-        //             },
-        //         })
-        //     }
-        // }
     }
 
 
@@ -102,9 +70,6 @@ function App() {
         setOpen(true);
     };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
 
     const handleEventClick = (clickInfo) => {
         alert(`Editing the event '${clickInfo.event.title}'`)
@@ -156,9 +121,6 @@ function App() {
                     justifyContent: "space-evenly",
                 }}
             >
-                {/*<Header*/}
-                {/*    LightTheme={LightTheme}*/}
-                {/*/>*/}
                 {ShowControls && (
                     <div>
                 <div
@@ -209,7 +171,7 @@ function App() {
                 <div>
                     <CustomButton className="button-default"  variant="contained" color="primary" onClick={handleClickAdd}>
                         Add Shift or Appointment</CustomButton>
-                    { open && <FormDialog setShowModal={setOpen}/>}
+                    { open && <AddEventDialog setShowModal={setOpen} selectedData={SelectedDate}/>}
                 </div>
                 </div>
                 {ShowFilters && (
