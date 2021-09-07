@@ -14,7 +14,6 @@ const AddEventForm = ({setShowModal, selectedData}) => {
 
     useEffect(() => {
         console.log(selectedData)
-        // defaultValues.staff = selectedData.resource.title;
     });
 
 
@@ -22,7 +21,8 @@ const AddEventForm = ({setShowModal, selectedData}) => {
         participant: "",
         location: "Home",
         role: "Care",
-        staff: selectedData.resource.title
+        staff: selectedData.resource.title,
+        bookingNote: ""
     }
     const [formValues, setFormValues] = useState(defaultValues);
     const knownPhotos = ["Greg","Marcia"]
@@ -63,6 +63,7 @@ const AddEventForm = ({setShowModal, selectedData}) => {
                     name: formValues.participant,
                     image: findPhoto(formValues.participant)
                 },
+                bookingNote: formValues.bookingNote,
                 status: 'draft'
             },
             backgroundColor: '#f2e2dc',
@@ -162,6 +163,20 @@ const AddEventForm = ({setShowModal, selectedData}) => {
                             </MenuItem>
                         ))}
                     </TextField>
+                </Grid>
+                <Grid item>
+                <TextField
+                    margin="dense"
+                    id="booking-input"
+                    label="Booking Note"
+                    name="bookingNote"
+                    multiline
+                    fullWidth
+                    minRows={2}
+                    value={formValues.bookingNote ?? ""}
+                    onChange={handleInputChange}
+                    type="text"
+                />
                 </Grid>
                 <Grid container justifyContent="flex-end">
                     <Button onClick={handleClose} color="default">
