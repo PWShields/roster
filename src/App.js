@@ -188,7 +188,7 @@ function App() {
                 transition: "all 0.5s linear",
             }}>
             {!ShowSchedule && (
-                    <Calendar initialView="dayGridMonth" initialDate={new Date()} events={shifts} eventContent=""
+                    <Calendar initialView="dayGridMonth" initialDate={new Date()} events={shifts}
                               weekendsVisible={WeekendsVisible} handleSelect={handleDateSelect}
                               eventClick={handleEventClick}/>
                 )}

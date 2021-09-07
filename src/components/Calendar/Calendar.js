@@ -9,7 +9,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 
 
-const Calendar = ({initialView, events, eventContent, initialDate, weekendsVisible, handleSelect, eventClick}) => (
+const Calendar = ({initialView, events, initialDate, weekendsVisible, handleSelect, eventClick}) => (
     <FullCalendar
         plugins={[
             dayGridPlugin,

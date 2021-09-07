@@ -1,5 +1,11 @@
 import React, {useEffect, useState} from "react";
-import Grid from "@material-ui/core/Grid";
+import 'date-fns';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    DateTimePicker
+} from '@material-ui/pickers';
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
@@ -16,24 +22,48 @@ const AddEventForm = ({setShowModal, selectedData}) => {
         console.log(selectedData)
     });
 
+    const currentDate = selectedData.start
+    const oneHourLater = new Date(currentDate)
+
+    function findStaff() {
+        let staffMember = ""
+        if (selectedData && selectedData.resource) {
+          staffMember = selectedData.resource.title
+        }
+        return staffMember
+    }
 
     const defaultValues = {
         participant: "",
         location: "Home",
         role: "Care",
-        staff: selectedData.resource.title,
-        bookingNote: ""
+        staff: findStaff(),
+        bookingNote: "",
+        startDate: currentDate,
+        endDate: oneHourLater.setHours(oneHourLater.getHours() + 1)
     }
     const [formValues, setFormValues] = useState(defaultValues);
     const knownPhotos = ["Greg","Marcia"]
 
 
-    const handleInputChange = (e) => {
-        const {name, value} = e.target;
+    function updateFormValues(name, value) {
         setFormValues({
             ...formValues,
             [name]: value,
         });
+    }
+
+    const handleStartChange = (date) => {
+        updateFormValues("startDate", date)
+    }
+
+    const handleEndChange = (date) => {
+        updateFormValues("endDate", date)
+    }
+
+    const handleInputChange = (e) => {
+        const {name, value} = e.target;
+        updateFormValues(name, value);
     };
 
     const findPhoto = (participant) => {
@@ -178,6 +208,28 @@ const AddEventForm = ({setShowModal, selectedData}) => {
                     type="text"
                 />
                 </Grid>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <Grid container justifyContent="space-around">
+                        <DateTimePicker
+                            margin="normal"
+                            id="start-date-input"
+                            label="Start"
+                            name="startDate"
+                            format="dd MMM yy hh:mm a"
+                            value={formValues.startDate}
+                            onChange={handleStartChange}
+                        />
+                        <DateTimePicker
+                            margin="normal"
+                            id="end-date-input"
+                            label="End"
+                            name="endDate"
+                            format="dd MMM yy hh:mm a"
+                            value={formValues.endDate}
+                            onChange={handleEndChange}
+                        />
+                    </Grid>
+                </MuiPickersUtilsProvider>
                 <Grid container justifyContent="flex-end">
                     <Button onClick={handleClose} color="default">
                         cancel
