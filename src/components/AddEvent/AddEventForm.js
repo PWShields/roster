@@ -83,9 +83,9 @@ const AddEventForm = ({setShowModal, selectedData}) => {
         calendarApi.unselect() // clear date selection
         calendarApi.addEvent({
             id: createEventId(),
-            start: selectedData.start,
-            end: selectedData.end,
-            allDay: selectedData.allDay,
+            start: formValues.startDate,
+            end: formValues.endDate,
+            allDay: false,
             title: formValues.role,
             resourceId: resourceId,
             extendedProps: {
