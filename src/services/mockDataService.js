@@ -16,6 +16,14 @@ export default MockDataService = () => {
         {label: "Cancelled", value: "CAN"},
     ];
 
+    const appointmentTypes = [
+        {label: "Free", value: "free"},
+        {label: "Long", value: "long"},
+        {label: "Short", value: "short"},
+        {label: "Special", value: "special"},
+        {label: "Standard", value: "standard"},
+    ];
+
     const billableValues = [
         {label: "Yes", value: "1"},
         {label: "No", value: "0"},
@@ -42,6 +50,6 @@ export default MockDataService = () => {
 
     return {
         attendanceValues, billableValues, privacyValues, convertValueToLabel, convertLabelToValue,
-        locations, roles, staffSelect, participants, shifts, staff
+        locations, roles, staffSelect, participants, shifts, staff, appointmentTypes
     };
 };

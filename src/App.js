@@ -15,6 +15,7 @@ import AddEventDialog from "./components/AddEvent/AddEventDialog";
 import Grid from "@material-ui/core/Grid";
 import CustomButton from "./components/Widgets/CustomButton";
 import LegendCard from "./components/Widgets/LegendCard";
+import FiltersDialog from "./components/Filters/FiltersDialog";
 
 
 
@@ -181,6 +182,9 @@ function App() {
                 {/*        Add Shift or Appointment</CustomButton>*/}
                     { open && <AddEventDialog setShowModal={setOpen} selectedData={SelectedDate}/>}
                 </div>
+                    <div>
+                        { ShowFilters && <FiltersDialog setShowModal={setShowFilters} selectedData={SelectedDate}/>}
+                    </div>
                 </div>
                 {ShowFilters && (
                         <div>
@@ -201,12 +205,13 @@ function App() {
             {!ShowSchedule && (
                     <Calendar initialView="dayGridMonth" initialDate={new Date()} events={shifts}
                               weekendsVisible={WeekendsVisible} handleSelect={handleDateSelect}
-                              eventClick={handleEventClick}/>
+                              eventClick={handleEventClick} showFilters={setShowFilters}/>
                 )}
                 {ShowSchedule && (
                     <Schedule initialView="resourceTimelineMonth" initialDate={new Date()} resources={staff}
                               events={shifts} eventContent={renderEventContent} weekendsVisible={WeekendsVisible}
                               handleSelect={handleDateSelect}  eventClick={handleEventClick} lightTheme={LightTheme}
+                              showFilters={setShowFilters}
                     />
                 )}
             </div>

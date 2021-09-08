@@ -9,7 +9,7 @@ import listPlugin from '@fullcalendar/list';
 
 const Schedule = ({
                       initialView, eventContent, initialDate, resources, events, weekendsVisible, handleSelect,
-                      eventClick, handleDrop
+                      eventClick, handleDrop, showFilters
                   }) => (
     <FullCalendar
         plugins={[resourceTimelinePlugin, dayGridPlugin, timeGridPlugin, interactionPlugin, adaptivePlugin,
@@ -29,10 +29,22 @@ const Schedule = ({
         select={handleSelect}
         eventClick={eventClick}
         schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
+        customButtons={{
+            filterButton: {
+                text: 'filter',
+                click: showFilters
+            },
+            clearFilterButton: {
+                text: 'clear',
+                click: function () {
+                    alert('clicked the clear button');
+                }
+            }
+        }}
         headerToolbar={{
-            left: 'prev,next today',
+            left: 'prev,next today filterButton clearFilterButton',
             center: 'title',
-            right: 'resourceTimelineMonth,resourceTimelineWeek,resourceTimelineDay,listMonth threeDays'
+            right: 'resourceTimelineMonth,resourceTimelineWeek,resourceTimelineDay,listMonth'
         }}
         resourceAreaHeaderContent='Staff'
         views={{

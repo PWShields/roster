@@ -18,6 +18,10 @@ const roles = [
     {
         value: 'Cleaning',
         label: 'Cleaning',
+    },
+    {
+        value: '',
+        label: ''
     }
 ];
 export default roles;
