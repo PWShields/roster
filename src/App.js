@@ -29,6 +29,16 @@ function App() {
     const [open, setOpen] = useState(false);
     const [shifts, setShifts] = useState([])
     const [staff, setStaff] = useState([])
+    const defaultFilterValues = {
+        participant: "",
+        location: "",
+        role: "",
+        staff: "",
+        bookingNote: "",
+        billable: "",
+        type: ""
+    }
+    const [filterValues, setFilterValues] = useState(defaultFilterValues)
 
     const mockDataService = MockDataService();
 
@@ -165,7 +175,7 @@ function App() {
                 </div>
                 <Grid container justifyContent="flex-start" alignItems="center">
                 <div>
-                    <div style={{ paddingBottom: 10, paddingTop: 50 }}>
+                    <div style={{ paddingBottom: 1, paddingTop: 110 }}>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Drag & drop this block to create a new shift</p>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Or click on a date in the calendar</p>
                     <CustomButton className="button-default" id="new-shift" variant="contained" color="primary"  endIcon={<DragIndicator/>}>
@@ -178,7 +188,8 @@ function App() {
                     { open && <AddEventDialog setShowModal={setOpen} selectedData={SelectedDate}/>}
                 </div>
                     <div>
-                        { ShowFilters && <FiltersDialog setShowModal={setShowFilters} selectedData={SelectedDate}/>}
+                        { ShowFilters && <FiltersDialog setShowModal={setShowFilters} existingValues={filterValues}
+                                                        setFilters={setFilterValues}/>}
                     </div>
                 </div>
                 </Grid>

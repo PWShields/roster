@@ -5,7 +5,7 @@ import {Dialog, DialogContent} from "@material-ui/core";
 import FilterForm from "./FilterForm";
 
 
-export default function FiltersDialog({setShowModal, selectedData} ) {
+export default function FiltersDialog({setShowModal, existingValues, setFilters} ) {
     const [isOpen, setIsOpen] = useState(true);
 
     const handleClose = () => {
@@ -21,7 +21,7 @@ export default function FiltersDialog({setShowModal, selectedData} ) {
                     <DialogContentText>
                     Restrict the view of the data with 1 or more of the following filters.
                     </DialogContentText>
-                    <FilterForm setShowModal = {setShowModal} selectedData={selectedData}  />
+                    <FilterForm setShowModal = {setShowModal} existingValues={existingValues} setFilters={setFilters} />
                 </DialogContent>
             </Dialog>
         </div>

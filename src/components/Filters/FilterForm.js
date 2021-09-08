@@ -10,7 +10,7 @@ import {createEventId} from "../../utilities/event-utils";
 import colours from "../../style/colours";
 
 
-const FilterForm = ({setShowModal, selectedData}) => {
+const FilterForm = ({setShowModal, existingValues, setFilters}) => {
 
     const [locations, setLocations] = useState([])
     const [roles, setRoles] = useState([])
@@ -22,7 +22,7 @@ const FilterForm = ({setShowModal, selectedData}) => {
     const mockDataService = MockDataService()
 
     useEffect(() => {
-        console.log(selectedData)
+        console.log(existingValues)
         setLocations(mockDataService.locations)
         setRoles(mockDataService.roles)
         setStaffSelect(mockDataService.staffSelect)
@@ -31,17 +31,7 @@ const FilterForm = ({setShowModal, selectedData}) => {
         setType(mockDataService.appointmentTypes)
     }, [locations, roles]);
 
-
-    const defaultValues = {
-        participant: "",
-        location: "",
-        role: "",
-        staff: "",
-        bookingNote: "",
-        billable: "",
-        type: ""
-    }
-    const [formValues, setFormValues] = useState(defaultValues);
+    const [formValues, setFormValues] = useState(existingValues);
 
 
     function updateFormValues(name, value) {
@@ -65,37 +55,13 @@ const FilterForm = ({setShowModal, selectedData}) => {
     };
 
 
-    function saveNewEvent() {
-        let calendarApi = selectedData.view.calendar
-        let resourceId = 1
-        if (selectedData.resource) {
-            resourceId = selectedData.resource.id
-        }
-        calendarApi.unselect() // clear date selection
-        calendarApi.addEvent({
-            id: createEventId(),
-            start: formValues.startDate,
-            end: formValues.endDate,
-            allDay: false,
-            title: formValues.role,
-            resourceId: resourceId,
-            extendedProps: {
-                client: {
-                    name: formValues.participant,
-                    image: ''
-                },
-                bookingNote: formValues.bookingNote,
-                status: 'draft'
-            },
-            backgroundColor: colours.booked,
-            borderColor: colours.booked_border,
-            className: 'moreBorder'
-        })
+    function saveFilters() {
+
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        saveNewEvent();
+        saveFilters();
         setShowModal(false);
     };
 
