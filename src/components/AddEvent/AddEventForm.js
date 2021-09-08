@@ -9,17 +9,26 @@ import {
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
-import participants from "../../data/participants";
-import staffSelect from "../../data/staffSelect";
-import roles from "../../data/roles";
-import locations from "../../data/locations";
+import MockDataService from '../../services/mockDataService';
+
 import {createEventId} from "../../utilities/event-utils";
 
 
 const AddEventForm = ({setShowModal, selectedData}) => {
 
+    const [locations, setLocations] = useState([])
+    const [roles, setRoles] = useState([])
+    const [staffSelect, setStaffSelect] = useState([])
+    const [participants, setParticipants] = useState([])
+
+    const mockDataService = MockDataService()
+
     useEffect(() => {
         console.log(selectedData)
+        setLocations(mockDataService.locations)
+        setRoles(mockDataService.roles)
+        setStaffSelect(mockDataService.staffSelect)
+        setParticipants(mockDataService.participants)
     });
 
     const currentDate = selectedData.start

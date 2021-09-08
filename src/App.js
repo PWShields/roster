@@ -6,8 +6,7 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Calendar from "./components/Calendar/Calendar";
 import Schedule from "./components/Schedule/Schedule";
-import staff from "./data/staff";
-import shifts from "./data/shifts";
+import MockDataService from './services/mockDataService';
 import {Draggable} from '@fullcalendar/interaction';
 import {createEventId} from './utilities/event-utils'
 import EventCard from "./components/Event/EventCard";
@@ -26,11 +25,19 @@ function App() {
     const [ShowControls, setShowControls] = useState(true);
     const [SelectedDate, setSelectedDate] = useState('');
     const [open, setOpen] = useState(false);
+    const [shifts, setShifts] = useState([])
+    const [staff, setStaff] = useState([])
 
+    const mockDataService = MockDataService();
 
     useEffect(() => {
         let draggableEl = document.getElementById('new-shift');
             new Draggable(draggableEl);
+    });
+
+    useEffect(() =>{
+        setShifts(mockDataService.shifts)
+        setStaff(mockDataService.staff)
     });
 
 
