@@ -10,6 +10,10 @@ const staffSelect = [
     {
         value: 'Jimmy Durante',
         label: 'Jimmy Durante',
+    },
+    {
+        value: '',
+        label: ''
     }
 ];
 

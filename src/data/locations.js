@@ -10,6 +10,10 @@ const locations = [
     {
         value: 'Regional',
         label: 'Local Office',
+    },
+    {
+        value: '',
+        label: ''
     }
 ];
 export default locations;

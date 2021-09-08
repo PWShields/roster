@@ -43,6 +43,10 @@ const participants = [
     {
         value: 'Fluffy',
         label: 'Fluffy',
+    },
+    {
+        value: '',
+        label: ''
     }
 ];
 export default participants;

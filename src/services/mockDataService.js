@@ -22,11 +22,13 @@ export default MockDataService = () => {
         {label: "Short", value: "short"},
         {label: "Special", value: "special"},
         {label: "Standard", value: "standard"},
+        {label: '', value: ''}
     ];
 
     const billableValues = [
         {label: "Yes", value: "1"},
         {label: "No", value: "0"},
+        {label: "", value: ""},
     ];
 
     const privacyValues = [
