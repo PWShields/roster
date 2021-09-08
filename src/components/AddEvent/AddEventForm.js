@@ -12,6 +12,7 @@ import Button from "@material-ui/core/Button";
 import MockDataService from '../../services/mockDataService';
 
 import {createEventId} from "../../utilities/event-utils";
+import colours from "../../style/colours";
 
 
 const AddEventForm = ({setShowModal, selectedData}) => {
@@ -29,7 +30,7 @@ const AddEventForm = ({setShowModal, selectedData}) => {
         setRoles(mockDataService.roles)
         setStaffSelect(mockDataService.staffSelect)
         setParticipants(mockDataService.participants)
-    });
+    },[]);
 
     const currentDate = selectedData.start
     const oneHourLater = new Date(currentDate)
@@ -105,8 +106,8 @@ const AddEventForm = ({setShowModal, selectedData}) => {
                 bookingNote: formValues.bookingNote,
                 status: 'draft'
             },
-            backgroundColor: '#f2e2dc',
-            borderColor: '#d9aa99',
+            backgroundColor: colours.booked,
+            borderColor: colours.booked_border,
             className:'moreBorder'
         })
     }

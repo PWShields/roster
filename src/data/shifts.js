@@ -1,3 +1,5 @@
+import colours from "../style/colours";
+
 let shifts = [
     {
         id: 1,
@@ -14,8 +16,8 @@ let shifts = [
             bookingNote: "Marsha likes going on picnics and watching TV.",
             paid: 'true'
         },
-        backgroundColor: '#f2e2dc',
-        borderColor: '#d9aa99',
+        backgroundColor: colours.completed,
+        borderColor: colours.completed_border,
         className:'moreBorder'
     },
     {
@@ -32,8 +34,8 @@ let shifts = [
             status: 'finalised',
             bookingNote: "Greg is very boisterous and needs a lot of attention."
         },
-        backgroundColor: '#ffd599',
-        borderColor: '#ffb347',
+        backgroundColor: colours.cancelled,
+        borderColor: colours.cancelled_border,
         className:'moreBorder'
     },
     {
@@ -50,8 +52,8 @@ let shifts = [
             status:'draft',
             bookingNote: "Have an awesome time."
         },
-        backgroundColor: '#ccddeb',
-        borderColor: '#77a5ca',
+        backgroundColor: colours.booked,
+        borderColor: colours.booked_border,
         className:'moreBorder'
     }
 ];

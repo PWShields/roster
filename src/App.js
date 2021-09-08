@@ -14,6 +14,7 @@ import EventCardNew from "./components/Event/EventCardNew";
 import AddEventDialog from "./components/AddEvent/AddEventDialog";
 import Grid from "@material-ui/core/Grid";
 import CustomButton from "./components/Widgets/CustomButton";
+import LegendCard from "./components/Widgets/LegendCard";
 
 
 
@@ -38,7 +39,7 @@ function App() {
     useEffect(() =>{
         setShifts(mockDataService.shifts)
         setStaff(mockDataService.staff)
-    });
+    },[]);
 
 
     const handleDateSelect = (selectInfo) => {
@@ -176,8 +177,8 @@ function App() {
                     </CustomButton>
                 </div>
                 <div>
-                    <CustomButton className="button-default"  variant="contained" color="primary" onClick={handleClickAdd}>
-                        Add Shift or Appointment</CustomButton>
+                    {/*<CustomButton className="button-default"  variant="contained" color="primary" onClick={handleClickAdd}>*/}
+                {/*        Add Shift or Appointment</CustomButton>*/}
                     { open && <AddEventDialog setShowModal={setOpen} selectedData={SelectedDate}/>}
                 </div>
                 </div>
@@ -186,6 +187,9 @@ function App() {
                             THIS IS THE FILTERS SECTION
                         </div>
                 )}
+                </Grid>
+                <Grid container justifyContent="flex-end" alignItems="center">
+                <LegendCard />
                 </Grid>
             </Container>
 
