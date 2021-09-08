@@ -20,6 +20,7 @@ const Schedule = ({
         weekends={weekendsVisible}
         height = {"auto"}
         slotMinWidth={110}
+        slotMinTime={"08:00:00"}
         navLinks={true}
         editable={true}
         droppable={true}
