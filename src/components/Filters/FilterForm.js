@@ -96,7 +96,6 @@ const FilterForm = ({setShowModal, selectedData}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         saveNewEvent();
-        setFormValues(defaultValues)
         setShowModal(false);
     };
 
@@ -106,7 +105,7 @@ const FilterForm = ({setShowModal, selectedData}) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleClose}>
             <Grid container spacing={2}>
                 <Grid item xs>
                     <TextField

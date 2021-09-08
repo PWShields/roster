@@ -151,11 +151,6 @@ function App() {
                         checked={LightTheme}
                         onChange={() => setLightTheme(!LightTheme)}
                     />
-                        <span>{ShowFilters ? "Hide" : "Show"} Filters</span>
-                        <ControlsSwitch
-                            checked={ShowFilters}
-                            onChange={() => setShowFilters(!ShowFilters)}
-                        />
                 </Grid>
                 </div>
                     </div>
@@ -186,11 +181,6 @@ function App() {
                         { ShowFilters && <FiltersDialog setShowModal={setShowFilters} selectedData={SelectedDate}/>}
                     </div>
                 </div>
-                {ShowFilters && (
-                        <div>
-                            THIS IS THE FILTERS SECTION
-                        </div>
-                )}
                 </Grid>
                 <Grid container justifyContent="flex-end" alignItems="center">
                 <LegendCard />
