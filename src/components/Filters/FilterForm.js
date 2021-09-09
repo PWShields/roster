@@ -39,14 +39,6 @@ const FilterForm = ({setShowModal, existingValues, setFilters}) => {
         });
     }
 
-    const handleStartChange = (date) => {
-        updateFormValues("startDate", date)
-    }
-
-    const handleEndChange = (date) => {
-        updateFormValues("endDate", date)
-    }
-
     const handleInputChange = (e) => {
         const {name, value} = e.target;
         updateFormValues(name, value);

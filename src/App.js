@@ -54,6 +54,10 @@ function App() {
         setStaff(mockDataService.filterStaff(filterValues.staff))
     },[filterValues]);
 
+    const clearFilters = () => {
+        setFilterValues(defaultFilterValues)
+        setShowFilterPanel(false)
+    }
 
     const handleDateSelect = (selectInfo) => {
         setSelectedDate(selectInfo)
@@ -62,7 +66,11 @@ function App() {
 
     const handleFilterChange = (newFilters) =>{
         setFilterValues(newFilters)
-        setShowFilterPanel(true)
+        if(true) {
+            setShowFilterPanel(true)
+        } else {
+            setShowFilterPanel(false)
+        }
     };
 
 
@@ -223,7 +231,7 @@ function App() {
                     <Schedule initialView="resourceTimelineMonth" initialDate={new Date()} resources={staff}
                               events={shifts} eventContent={renderEventContent} weekendsVisible={WeekendsVisible}
                               handleSelect={handleDateSelect}  eventClick={handleEventClick} lightTheme={LightTheme}
-                              showFilters={setShowFilters}
+                              showFilters={setShowFilters} clearFilters={clearFilters}
                     />
                 )}
             </div>

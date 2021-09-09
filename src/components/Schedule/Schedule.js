@@ -9,7 +9,7 @@ import listPlugin from '@fullcalendar/list';
 
 const Schedule = ({
                       initialView, eventContent, initialDate, resources, events, weekendsVisible, handleSelect,
-                      eventClick, handleDrop, showFilters
+                      eventClick, handleDrop, showFilters, clearFilters
                   }) => (
     <FullCalendar
         plugins={[resourceTimelinePlugin, dayGridPlugin, timeGridPlugin, interactionPlugin, adaptivePlugin,
@@ -36,9 +36,7 @@ const Schedule = ({
             },
             clearFilterButton: {
                 text: 'clear',
-                click: function () {
-                    alert('clicked the clear button');
-                }
+                click: clearFilters
             }
         }}
         headerToolbar={{
