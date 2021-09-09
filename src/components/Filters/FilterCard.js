@@ -1,10 +1,6 @@
 import React from "react";
-import "./EventCard.css";
-import ImageComponent from "../Widgets/ImageComponent";
-import MonetizationOnTwoToneIcon from '@material-ui/icons/MonetizationOnTwoTone';
 import Tooltip from '@material-ui/core/Tooltip';
 import {withStyles} from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 
 const FilterCard = ({filterName, filterValue}) => {
     const HtmlTooltip = withStyles((theme) => ({
@@ -19,10 +15,10 @@ const FilterCard = ({filterName, filterValue}) => {
 
     return (
         <div className={"card"}>
-                <div >
-                    <b style={{color: '#626262'}}>{filterName}</b>
-                    <p style={{color: '#c0c0c0'}}><i>{filterValue}</i></p>
-                </div>
+            <div>
+                <b style={{color: '#626262'}}>{filterName}</b>
+                <p style={{color: '#c0c0c0'}}><i>{filterValue}</i></p>
+            </div>
         </div>
     );
 };

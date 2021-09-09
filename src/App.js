@@ -16,6 +16,7 @@ import Grid from "@material-ui/core/Grid";
 import CustomButton from "./components/Widgets/CustomButton";
 import LegendCard from "./components/Widgets/LegendCard";
 import FiltersDialog from "./components/Filters/FiltersDialog";
+import FilterPanel from "./components/Filters/FilterPanel";
 
 
 
@@ -24,6 +25,7 @@ function App() {
     const [ShowSchedule, setShowSchedule] = useState(true);
     const [WeekendsVisible, setWeekendsVisible] = useState(false);
     const [ShowFilters, setShowFilters] = useState(false);
+    const [ShowFilterPanel, setShowFilterPanel] = useState(false);
     const [ShowControls, setShowControls] = useState(true);
     const [SelectedDate, setSelectedDate] = useState('');
     const [open, setOpen] = useState(false);
@@ -57,6 +59,11 @@ function App() {
         setSelectedDate(selectInfo)
         handleClickAdd()
     }
+
+    const handleFilterChange = (newFilters) =>{
+        setFilterValues(newFilters)
+        setShowFilterPanel(true)
+    };
 
 
     const handleDrop = (dropInfo) => {
@@ -121,6 +128,7 @@ function App() {
         track: {},
     })(Switch);
 
+
     return (
         <div
             className="App"
@@ -182,6 +190,9 @@ function App() {
                         Add Shift
                     </CustomButton>
                 </div>
+                    <div>
+                        {ShowFilterPanel && <FilterPanel filters={filterValues}/>}
+                    </div>
                 <div>
                     {/*<CustomButton className="button-default"  variant="contained" color="primary" onClick={handleClickAdd}>*/}
                 {/*        Add Shift or Appointment</CustomButton>*/}
@@ -189,7 +200,7 @@ function App() {
                 </div>
                     <div>
                         { ShowFilters && <FiltersDialog setShowModal={setShowFilters} existingValues={filterValues}
-                                                        setFilters={setFilterValues}/>}
+                                                        setFilters={handleFilterChange}/>}
                     </div>
                 </div>
                 </Grid>

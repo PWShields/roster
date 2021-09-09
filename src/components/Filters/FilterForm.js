@@ -6,8 +6,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import MockDataService from '../../services/mockDataService';
 
-import {createEventId} from "../../utilities/event-utils";
-import colours from "../../style/colours";
 
 
 const FilterForm = ({setShowModal, existingValues, setFilters}) => {
