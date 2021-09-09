@@ -56,7 +56,7 @@ const FilterForm = ({setShowModal, existingValues, setFilters}) => {
 
 
     function saveFilters() {
-
+        setFilters(formValues)
     }
 
     const handleSubmit = (event) => {
@@ -71,7 +71,7 @@ const FilterForm = ({setShowModal, existingValues, setFilters}) => {
     }
 
     return (
-        <form onSubmit={handleClose}>
+        <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
                 <Grid item xs>
                     <TextField

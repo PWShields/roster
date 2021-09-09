@@ -49,8 +49,8 @@ function App() {
 
     useEffect(() =>{
         setShifts(mockDataService.shifts)
-        setStaff(mockDataService.staff)
-    },[]);
+        setStaff(mockDataService.filterStaff(filterValues.staff))
+    },[filterValues]);
 
 
     const handleDateSelect = (selectInfo) => {

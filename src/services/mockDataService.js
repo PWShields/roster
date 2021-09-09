@@ -4,6 +4,9 @@ import participants from "../data/participants";
 import staffSelect from "../data/staffSelect";
 import roles from "../data/roles";
 import locations from "../data/locations";
+import doris from "../data/doris";
+import harry from "../data/harry";
+import jimmy from "../data/jimmy";
 
 let MockDataService;
 
@@ -50,8 +53,30 @@ export default MockDataService = () => {
         return match.value;
     }
 
+    const filterStaff = (filterValue) => {
+        let filteredStaff = staff;
+        if(filterValue !== ""){
+            if(filterValue === "Doris Day"){
+                filteredStaff = doris;
+            } else if (filterValue === "Harry Belafonte"){
+                filteredStaff = harry;
+            } else if (filterValue === "Jimmy Durante"){
+                filteredStaff = jimmy;
+            }
+        }
+        return filteredStaff;
+    }
+    const filterRole = (filterValue) => {
+        let filteredRole = roles;
+        if (filterValue !== ""){
+            filteredRole = roles.find(function (role){
+                return
+            })
+        }
+    }
+
     return {
         attendanceValues, billableValues, privacyValues, convertValueToLabel, convertLabelToValue,
-        locations, roles, staffSelect, participants, shifts, staff, appointmentTypes
+        locations, roles, staffSelect, participants, shifts, filterStaff, appointmentTypes
     };
 };
