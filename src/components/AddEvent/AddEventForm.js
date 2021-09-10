@@ -2,10 +2,7 @@ import React, {useEffect, useState} from "react";
 import 'date-fns';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
-import {
-    MuiPickersUtilsProvider,
-    DateTimePicker
-} from '@material-ui/pickers';
+import {DateTimePicker, MuiPickersUtilsProvider} from '@material-ui/pickers';
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
@@ -91,7 +88,7 @@ const AddEventForm = ({setShowModal, selectedData}) => {
             resourceId = selectedData.resource.id
         }
         calendarApi.unselect() // clear date selection
-        calendarApi.addEvent({
+        const newEvent = {
             id: createEventId(),
             start: formValues.startDate,
             end: formValues.endDate,
@@ -108,8 +105,11 @@ const AddEventForm = ({setShowModal, selectedData}) => {
             },
             backgroundColor: colours.booked,
             borderColor: colours.booked_border,
-            className:'moreBorder'
-        })
+            className: 'moreBorder'
+        };
+        calendarApi.addEvent(newEvent
+        )
+        let allEvents = calendarApi.getEvents();
     }
 
     const handleSubmit = (event) => {
