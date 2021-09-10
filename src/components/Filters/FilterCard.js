@@ -1,7 +1,10 @@
 import React from "react";
 import Tooltip from '@material-ui/core/Tooltip';
 import {withStyles} from '@material-ui/core/styles';
-
+import {Grid} from "@material-ui/core";
+import CustomButton from "../Widgets/CustomButton";
+import ClearRoundedIcon from '@material-ui/icons/ClearRounded';
+import FilterButton from "../Widgets/FilterButton";
 const FilterCard = ({filterName, filterValue}) => {
     const HtmlTooltip = withStyles((theme) => ({
         tooltip: {
@@ -15,10 +18,14 @@ const FilterCard = ({filterName, filterValue}) => {
 
     return (
         <div className={"card"}>
-            <div>
-                <b style={{color: '#626262'}}>{filterName}</b>
-                <p style={{color: '#c0c0c0'}}><i>{filterValue}</i></p>
-            </div>
+            <Grid container alignItems="center" justifyContent="space-between" direction="row">
+                <Grid item>
+                    <FilterButton className="button-filter" id={filterName} size="small" variant="contained" color="primary"
+                                  endIcon={<ClearRoundedIcon/>}>
+                        {filterValue}
+                    </FilterButton>
+                </Grid>
+            </Grid>
         </div>
     );
 };

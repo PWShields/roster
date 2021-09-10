@@ -12,6 +12,7 @@ const colours = {
   pastel_pink: "rgba(255, 209, 220, .7)",
   polo_blue: "#88AED3",
   prussian_blue: "rgba(0,42,83, .7)",
+  red_damascus: "#CC7A52",
   rouge: "rgba(169, 64, 100, .7)",
   tea_green:"#C8E2B3",
   terracotta: "rgba(204, 78, 92, .7)",

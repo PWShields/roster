@@ -15,17 +15,49 @@ const FilterPanel = ({filters}) => {
         },
     }))(Tooltip);
 
+
+    function lookupBillableLabel(billable) {
+        let label = 'Yes'
+        if(billable === '0'){
+            label = 'No'
+        }
+        return label;
+    }
+
     return (
-        <Grid container alignItems="center"  direction="row">
-            {/*{filters.map((filter) => (*/}
-            {/*    <Grid item>*/}
-            {/*    <FilterCard filterName={filter.name} filterValue={filter.filterValue}>*/}
-            {/*    </FilterCard>*/}
-            {/*    </Grid>*/}
-            {/*))}*/}
-            <p>FILTER PANEL</p>
+        <Grid container alignItems="center" justifyContent="space-evenly" direction="row">
+            <Grid item><p>Filters:</p></Grid>
+            {(filters.participant !== "") && <Grid item>
+                <FilterCard filterName="participant" filterValue={filters.participant}>
+                </FilterCard>
+            </Grid>
+            }
+            {(filters.location !== "") && <Grid item>
+                <FilterCard filterName="location" filterValue={filters.location}>
+                </FilterCard>
+            </Grid>
+            }
+            {(filters.staff !== "") && <Grid item>
+                <FilterCard filterName="staff" filterValue={filters.staff}>
+                </FilterCard>
+            </Grid>
+            }
+            {(filters.role !== "") && <Grid item>
+                <FilterCard filterName="role" filterValue={filters.role}>
+                </FilterCard>
+            </Grid>
+            }
+            {(filters.billable !== "") && <Grid item>
+                <FilterCard filterName="billable" filterValue={lookupBillableLabel(filters.billable)}>
+                </FilterCard>
+            </Grid>}
+            {(filters.type !== "") && <Grid item>
+                <FilterCard filterName="type" filterValue={filters.type}>
+                </FilterCard>
+            </Grid>
+            }
         </Grid>
-            );
+    );
 };
 
 export default FilterPanel;

@@ -110,7 +110,6 @@ function App() {
     }
 
     const renderEventContent = (eventInfo) => {
-        // console.log(eventInfo)
         if (eventInfo.event.title !== undefined && eventInfo.event.title !== "") {
             return (
                 <EventCard eventInfo={eventInfo}/>
@@ -189,17 +188,22 @@ function App() {
                         onChange={() => setShowControls(!ShowControls)}
                     />
                 </div>
-                <Grid container justifyContent="flex-start" alignItems="center">
                 <div>
                     <div style={{ paddingBottom: 1, paddingTop: 110 }}>
-                    <p style={{paddingBottom: 1, fontSize: 8}}>Drag & drop this block to create a new shift</p>
+                        <p style={{paddingBottom: 1, fontSize: 8}}>Drag & drop this block to create a new shift</p>
                     <p style={{paddingBottom: 1, fontSize: 8}}>Or click on a date in the calendar</p>
-                    <CustomButton className="button-default" id="new-shift" variant="contained" color="primary"  endIcon={<DragIndicator/>}>
-                        Add Shift
-                    </CustomButton>
-                </div>
-                    <div>
-                        {ShowFilterPanel && <FilterPanel filters={filterValues}/>}
+                        <Grid container direction= "row" alignContent="center"  alignItems="center">
+                            <Grid item xs>
+                                <CustomButton className="button-default" id="new-shift" variant="contained" color="primary"  endIcon={<DragIndicator/>}>
+                                    Add Shift
+                                </CustomButton>
+                            </Grid>
+                            <Grid item xs={10}>
+                                <div>
+                                    {ShowFilterPanel && <FilterPanel filters={filterValues}/>}
+                                </div>
+                            </Grid>
+                        </Grid>
                     </div>
                 <div>
                     {/*<CustomButton className="button-default"  variant="contained" color="primary" onClick={handleClickAdd}>*/}
@@ -211,7 +215,6 @@ function App() {
                                                         setFilters={handleFilterChange}/>}
                     </div>
                 </div>
-                </Grid>
                 <Grid container justifyContent="flex-end" alignItems="center">
                 <LegendCard />
                 </Grid>
