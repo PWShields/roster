@@ -136,6 +136,20 @@ function App() {
     })(Switch);
 
 
+    function clearOneFilter( filterName) {
+        let newFilters = filterValues
+        console.log("Clear "+filterName)
+        for(let i = 0, size = newFilters.length; i < size ; i++){
+            let item = newFilters[i];
+            console.log("item "+item)
+            if(filterName === (item)){
+
+                item = ""
+            }
+        }
+        setFilterValues(newFilters)
+    }
+
     return (
         <div
             className="App"
@@ -200,7 +214,7 @@ function App() {
                             </Grid>
                             <Grid item xs={10}>
                                 <div>
-                                    {ShowFilterPanel && <FilterPanel filters={filterValues}/>}
+                                    {ShowFilterPanel && <FilterPanel filters={filterValues} saveFilterChange={handleFilterChange}/>}
                                 </div>
                             </Grid>
                         </Grid>

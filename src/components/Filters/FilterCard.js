@@ -2,9 +2,8 @@ import React from "react";
 import Tooltip from '@material-ui/core/Tooltip';
 import {withStyles} from '@material-ui/core/styles';
 import {Grid} from "@material-ui/core";
-import CustomButton from "../Widgets/CustomButton";
 import ClearRoundedIcon from '@material-ui/icons/ClearRounded';
-import FilterButton from "../Widgets/FilterButton";
+import FilterButton from "./FilterButton";
 const FilterCard = ({filterName, filterValue}) => {
     const HtmlTooltip = withStyles((theme) => ({
         tooltip: {
