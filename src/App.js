@@ -44,15 +44,22 @@ function App() {
 
     const mockDataService = MockDataService();
 
+    const scheduleRef = React.createRef();
+
     useEffect(() => {
         let draggableEl = document.getElementById('new-shift');
             new Draggable(draggableEl);
     });
 
     useEffect(() =>{
-        setShifts(mockDataService.shifts)
+        setShifts(mockDataService.filterShifts(filterValues.participant))
         setStaff(mockDataService.filterStaff(filterValues.staff))
     },[filterValues]);
+
+    // useEffect(() =>{
+    //     setShifts(mockDataService.filterShifts(filterValues.participant))
+    //     console.log(shifts)
+    // },[shifts]);
 
     const clearFilters = () => {
         setFilterValues(defaultFilterValues)
@@ -74,32 +81,6 @@ function App() {
     };
 
 
-    const handleDrop = (dropInfo) => {
-        let title = prompt('Please enter a new title for your event')
-        let calendarApi = dropInfo.view.calendar
-        let resourceId = 1
-        if (dropInfo.resource) {
-            resourceId = dropInfo.resource.id
-        }
-        calendarApi.unselect() // clear date selection
-        if (title) {
-        calendarApi.addEvent({
-            id: createEventId(),
-            title: "new",
-            start: dropInfo.dateStr,
-            end: dropInfo.dateStr,
-            allDay: false,
-            resourceId,
-            extendedProps: {
-                client: {
-                    name: "",
-                    image: "",
-                },
-                status: 'draft'
-            },
-        })
-        }
-    }
     const handleClickAdd = () => {
         setOpen(true);
     };
@@ -222,7 +203,7 @@ function App() {
                 <div>
                     {/*<CustomButton className="button-default"  variant="contained" color="primary" onClick={handleClickAdd}>*/}
                 {/*        Add Shift or Appointment</CustomButton>*/}
-                    { open && <AddEventDialog setShowModal={setOpen} selectedData={SelectedDate}/>}
+                    { open && <AddEventDialog setShowModal={setOpen} selectedData={SelectedDate} setEvents={setShifts}/>}
                 </div>
                     <div>
                         { ShowFilters && <FiltersDialog setShowModal={setShowFilters} existingValues={filterValues}
@@ -248,7 +229,7 @@ function App() {
                     <Schedule initialView="resourceTimelineMonth" initialDate={new Date()} resources={staff}
                               events={shifts} eventContent={renderEventContent} weekendsVisible={WeekendsVisible}
                               handleSelect={handleDateSelect}  eventClick={handleEventClick} lightTheme={LightTheme}
-                              showFilters={setShowFilters} clearFilters={clearFilters}
+                              showFilters={setShowFilters} clearFilters={clearFilters} ref={scheduleRef}
                     />
                 )}
             </div>

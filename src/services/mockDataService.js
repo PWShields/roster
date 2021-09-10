@@ -7,6 +7,8 @@ import locations from "../data/locations";
 import doris from "../data/doris";
 import harry from "../data/harry";
 import jimmy from "../data/jimmy";
+import marciaShifts from "../data/marciaShifts";
+import gregShifts from "../data/gregShifts";
 
 let MockDataService;
 
@@ -74,9 +76,21 @@ export default MockDataService = () => {
             })
         }
     }
+    const filterShifts = (filterValue) => {
+        let filteredShifts = shifts;
+        if (filterValue === "Marcia"){
+        filteredShifts = marciaShifts
+        } else if (filterValue === "Greg"){
+            filteredShifts = gregShifts
+        }
+        return filteredShifts
+    }
+
 
     return {
         attendanceValues, billableValues, privacyValues, convertValueToLabel, convertLabelToValue,
-        locations, roles, staffSelect, participants, shifts, filterStaff, appointmentTypes
+        locations, roles, staffSelect, participants, shifts, filterStaff, appointmentTypes,
+        filterShifts
+
     };
 };

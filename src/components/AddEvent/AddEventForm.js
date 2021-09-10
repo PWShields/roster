@@ -12,7 +12,7 @@ import {createEventId} from "../../utilities/event-utils";
 import colours from "../../style/colours";
 
 
-const AddEventForm = ({setShowModal, selectedData}) => {
+const AddEventForm = ({setShowModal, selectedData, setEvents, existingEvents}) => {
 
     const [locations, setLocations] = useState([])
     const [roles, setRoles] = useState([])
@@ -107,9 +107,7 @@ const AddEventForm = ({setShowModal, selectedData}) => {
             borderColor: colours.booked_border,
             className: 'moreBorder'
         };
-        calendarApi.addEvent(newEvent
-        )
-        let allEvents = calendarApi.getEvents();
+        calendarApi.addEvent(newEvent)
     }
 
     const handleSubmit = (event) => {

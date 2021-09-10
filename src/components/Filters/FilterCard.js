@@ -16,7 +16,7 @@ const FilterCard = ({filterName, filterValue}) => {
     }))(Tooltip);
 
     return (
-        <div className={"card"}>
+        <div style={{marginLeft: 20}}>
             <Grid container alignItems="center" justifyContent="space-between" direction="row">
                 <Grid item>
                     <FilterButton className="button-filter" id={filterName} size="small" variant="contained" color="primary"

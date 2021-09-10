@@ -17,15 +17,15 @@ const FilterPanel = ({filters}) => {
 
 
     function lookupBillableLabel(billable) {
-        let label = 'Yes'
+        let label = 'billable'
         if(billable === '0'){
-            label = 'No'
+            label = 'Not billable'
         }
         return label;
     }
 
     return (
-        <Grid container alignItems="center" justifyContent="space-evenly" direction="row">
+        <Grid container alignItems="center"  direction="row">
             <Grid item><p>Filters:</p></Grid>
             {(filters.participant !== "") && <Grid item>
                 <FilterCard filterName="participant" filterValue={filters.participant}>

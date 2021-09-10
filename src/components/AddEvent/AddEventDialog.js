@@ -5,7 +5,7 @@ import {Dialog, DialogContent} from "@material-ui/core";
 import AddEventForm from "./AddEventForm";
 
 
-export default function AddEventDialog( {setShowModal, selectedData} ) {
+export default function AddEventDialog( {setShowModal, selectedData, setEvents} ) {
     const [isOpen, setIsOpen] = useState(true);
 
     const handleClose = () => {
@@ -21,7 +21,7 @@ export default function AddEventDialog( {setShowModal, selectedData} ) {
                     <DialogContentText>
                         Please enter new appointment or shift details here
                     </DialogContentText>
-                    <AddEventForm setShowModal = {setShowModal}  selectedData={selectedData}  />
+                    <AddEventForm setShowModal = {setShowModal}  selectedData={selectedData} setEvents={setEvents} />
                 </DialogContent>
             </Dialog>
         </div>
