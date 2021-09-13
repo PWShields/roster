@@ -9,6 +9,7 @@ import harry from "../data/harry";
 import jimmy from "../data/jimmy";
 import marciaShifts from "../data/marciaShifts";
 import gregShifts from "../data/gregShifts";
+import noShifts from "../data/noShifts";
 
 let MockDataService;
 
@@ -80,8 +81,10 @@ export default MockDataService = () => {
         let filteredShifts = shifts;
         if (filterValue === "Marcia"){
         filteredShifts = marciaShifts
-        } else if (filterValue === "Greg"){
+        } else if (filterValue === "Greg") {
             filteredShifts = gregShifts
+        } else if (filterValue !== "") {
+            filteredShifts = noShifts
         }
         return filteredShifts
     }
