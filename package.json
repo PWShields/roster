@@ -1,5 +1,6 @@
 {
   "name": "roster-full-calendar",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,6 +29,7 @@
     "prop-types": "15.7.2",
     "rc-time-picker": "3.7.3",
     "react": "^17.0.2",
+    "react-app-rewired": "2.1.8",
     "react-dom": "^17.0.2",
     "react-hook-form": "7.14.2",
     "react-scripts": "4.0.3",
@@ -35,9 +37,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
